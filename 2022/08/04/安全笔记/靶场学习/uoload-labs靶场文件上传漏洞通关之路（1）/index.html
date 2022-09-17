@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/Grinlcm/img/fluid.png">
-  <link rel="icon" href="/Grinlcm/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,8 +21,8 @@
     <meta name="description" content="靶场简介upload-labs是一个使用php语言编写的，专门收集渗透测试和CTF中遇到的各种上传漏洞的靶场。靶场地址：https:&#x2F;&#x2F;github.com&#x2F;c0ny1&#x2F;upload-labs 。搭建环境为winodws 2003 + phpstudy2018（php5.2.17+apache） + 源码，只需将源码放置在www目录，在配置下站点域名管理，过程十分简单。唯一要注意的点就是80端口冲">
 <meta property="og:type" content="article">
 <meta property="og:title" content="uoload-labs靶场文件上传漏洞通关之路（1）">
-<meta property="og:url" content="https://github.com/Grinlcm/2022/08/04/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/uoload-labs%E9%9D%B6%E5%9C%BA%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E9%80%9A%E5%85%B3%E4%B9%8B%E8%B7%AF%EF%BC%881%EF%BC%89/index.html">
-<meta property="og:site_name" content="夜雨的安全笔记">
+<meta property="og:url" content="http://example.com/2022/08/04/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/uoload-labs%E9%9D%B6%E5%9C%BA%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E9%80%9A%E5%85%B3%E4%B9%8B%E8%B7%AF%EF%BC%881%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="靶场简介upload-labs是一个使用php语言编写的，专门收集渗透测试和CTF中遇到的各种上传漏洞的靶场。靶场地址：https:&#x2F;&#x2F;github.com&#x2F;c0ny1&#x2F;upload-labs 。搭建环境为winodws 2003 + phpstudy2018（php5.2.17+apache） + 源码，只需将源码放置在www目录，在配置下站点域名管理，过程十分简单。唯一要注意的点就是80端口冲">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://image.yeyusec.com/img/202209171842184.jpeg">
@@ -35,7 +35,7 @@
   
   
   
-  <title>uoload-labs靶场文件上传漏洞通关之路（1） - 夜雨的安全笔记</title>
+  <title>uoload-labs靶场文件上传漏洞通关之路（1） - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -59,12 +59,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/Grinlcm/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/Grinlcm/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/Grinlcm/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -73,15 +73,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"github.com","root":"/Grinlcm/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"eMQ0QW9NDWRc9H9YSH9guNP6-gzGzoHsz","app_key":"y3cQ01vcTKTEMOkMOxTx8mJ1","server_url":"https://emq0qw9n.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/Grinlcm/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"eMQ0QW9NDWRc9H9YSH9guNP6-gzGzoHsz","app_key":"y3cQ01vcTKTEMOkMOxTx8mJ1","server_url":"https://emq0qw9n.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/Grinlcm/js/utils.js" ></script>
-  <script  src="/Grinlcm/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
   
@@ -115,7 +115,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/Grinlcm/">
+    <a class="navbar-brand" href="/">
       <strong>夜雨的安全笔记</strong>
     </a>
 
@@ -134,7 +134,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/Grinlcm/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -146,7 +146,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/Grinlcm/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -158,7 +158,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/Grinlcm/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -170,7 +170,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/Grinlcm/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -182,7 +182,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/Grinlcm/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -211,7 +211,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/Grinlcm/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -302,7 +302,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="靶场简介"><a href="#靶场简介" class="headerlink" title="靶场简介"></a>靶场简介</h2><p>upload-labs是一个使用php语言编写的，专门收集渗透测试和CTF中遇到的各种上传漏洞的靶场。靶场地址：<a href="https://github.com/c0ny1/upload-labs">https://github.com/c0ny1/upload-labs</a> 。<br>搭建环境为winodws 2003 + phpstudy2018（php5.2.17+apache） + 源码，只需将源码放置在www目录，在配置下站点域名管理，过程十分简单。唯一要注意的点就是80端口冲突时，可以改用其他空闲的端口，或者将iis服务（占用80端口）关闭掉。</p>
+                <h2 id="靶场简介"><a href="#靶场简介" class="headerlink" title="靶场简介"></a>靶场简介</h2><p>upload-labs是一个使用php语言编写的，专门收集渗透测试和CTF中遇到的各种上传漏洞的靶场。靶场地址：<a target="_blank" rel="noopener" href="https://github.com/c0ny1/upload-labs">https://github.com/c0ny1/upload-labs</a> 。<br>搭建环境为winodws 2003 + phpstudy2018（php5.2.17+apache） + 源码，只需将源码放置在www目录，在配置下站点域名管理，过程十分简单。唯一要注意的点就是80端口冲突时，可以改用其他空闲的端口，或者将iis服务（占用80端口）关闭掉。</p>
 <h3 id="关于burpsuite光标对不准问题"><a href="#关于burpsuite光标对不准问题" class="headerlink" title="关于burpsuite光标对不准问题"></a>关于burpsuite光标对不准问题</h3><p>在使用burp抓包时遇到光标对不准的问题，想选中改掉文件名后缀结果光标一直在文字后面。经百度得知是分辨率的问题，我的拯救者是2k屏设置的是125%缩放，而burp并不支持就会导致文字错位。解决方案是直接把字体调大，我调到16pt。至于其他的该启动参数，设置javaw.exe支持高分辨率，我试了都不太行。</p>
 <h2 id="第一关-前端js绕过"><a href="#第一关-前端js绕过" class="headerlink" title="第一关-前端js绕过"></a>第一关-前端js绕过</h2><p>第一关看源码可知网站通过checkfile函数，将上传的php后缀的文件进行了过滤，并且仅仅是在前端进行了过滤。前端JS绕过方式主要有三种：<br>1.修改html源码绕过。下载html源代码，将.php加入到允许上传的文件类型或者直接删除校验函数，然后在form元素中添加action参数指向要上传的地址即可。<br>2.在线修改js绕过。F12直接修改js，没跑通。<br>3.burp修改数据包绕过。该题仅有前端校验，那么我们上传个jpg，然后通过burp抓包修改为php即可。</p>
 <h2 id="第二关-MIME"><a href="#第二关-MIME" class="headerlink" title="第二关-MIME"></a>第二关-MIME</h2><p>根据第二关提示可知这关是在服务端对数据包的MIME进行检查。<br>后端通过<code>$_FILES[&#39;userfile&#39;][&#39;type&#39;]</code>获取到的MIME信息进行文件格式的过滤,<code>$_FILES</code>指的是一个预定义的数组,用来获取通过POST方法上传文件的相关信息,包括文件的原名称、文件的MIME类型、已上传文件的大小等，其中<code>$_FILES[&#39;userfile&#39;][&#39;type&#39;]</code>获取到的是上传文件的 MIME 类型，常见的有image&#x2F;gif、image&#x2F;jpeg。</p>
@@ -326,12 +326,12 @@
     
       <span class="category-chain">
         
-  <a href="/Grinlcm/categories/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/" class="category-chain-item">安全笔记</a>
+  <a href="/categories/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/" class="category-chain-item">安全笔记</a>
   
   
     <span>></span>
     
-  <a href="/Grinlcm/categories/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/" class="category-chain-item">靶场学习</a>
+  <a href="/categories/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/" class="category-chain-item">靶场学习</a>
   
   
 
@@ -348,7 +348,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/Grinlcm/tags/%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">#漏洞靶场,文件上传</a>
+        <a href="/tags/%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">#漏洞靶场,文件上传</a>
       
     </div>
   
@@ -361,7 +361,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>uoload-labs靶场文件上传漏洞通关之路（1）</div>
-      <div>https://github.com/Grinlcm/2022/08/04/安全笔记/靶场学习/uoload-labs靶场文件上传漏洞通关之路（1）/</div>
+      <div>http://example.com/2022/08/04/安全笔记/靶场学习/uoload-labs靶场文件上传漏洞通关之路（1）/</div>
     </div>
     <div class="license-meta">
       
@@ -405,7 +405,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/Grinlcm/2022/08/18/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8B%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%EF%BC%881%EF%BC%89/" title="pikachu靶场实战之暴力破解（1）">
+                      <a href="/2022/08/18/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8B%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%EF%BC%881%EF%BC%89/" title="pikachu靶场实战之暴力破解（1）">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">pikachu靶场实战之暴力破解（1）</span>
                         <span class="visible-mobile">上一篇</span>
@@ -572,8 +572,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/Grinlcm/js/events.js" ></script>
-<script  src="/Grinlcm/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -595,7 +595,7 @@
 
 
   
-    <script  src="/Grinlcm/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -694,9 +694,9 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script defer src="/Grinlcm/js/leancloud.js" ></script>
+  <script defer src="/js/leancloud.js" ></script>
 
-  <script  src="/Grinlcm/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -704,7 +704,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/Grinlcm/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

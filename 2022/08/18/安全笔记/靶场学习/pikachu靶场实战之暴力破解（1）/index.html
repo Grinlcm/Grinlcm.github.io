@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/Grinlcm/img/fluid.png">
-  <link rel="icon" href="/Grinlcm/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,8 +21,8 @@
     <meta name="description" content="靶场简介Pikachu 是一个带有漏洞的Web应用系统，在这里包含了常见的 web 安全漏洞。 如果你是一个 Web 渗透测试学习人员且正发愁没有合适的靶场进行练习，那么 Pikachu 可能正合你意。以上是Pikachu漏洞平台的简介。 作为像我这种的安全新手，用 Pikachu 入门再好不过了，可供漏洞种类比较多，而且还免费，话不多说，直接开干。 暴力破解概述暴力破解即账号枚举, 攻击者使用自">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pikachu靶场实战之暴力破解（1）">
-<meta property="og:url" content="https://github.com/Grinlcm/2022/08/18/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8B%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%EF%BC%881%EF%BC%89/index.html">
-<meta property="og:site_name" content="夜雨的安全笔记">
+<meta property="og:url" content="http://example.com/2022/08/18/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8B%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%EF%BC%881%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="靶场简介Pikachu 是一个带有漏洞的Web应用系统，在这里包含了常见的 web 安全漏洞。 如果你是一个 Web 渗透测试学习人员且正发愁没有合适的靶场进行练习，那么 Pikachu 可能正合你意。以上是Pikachu漏洞平台的简介。 作为像我这种的安全新手，用 Pikachu 入门再好不过了，可供漏洞种类比较多，而且还免费，话不多说，直接开干。 暴力破解概述暴力破解即账号枚举, 攻击者使用自">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://image.yeyusec.com/img/202209171827605.jpeg">
@@ -35,7 +35,7 @@
   
   
   
-  <title>pikachu靶场实战之暴力破解（1） - 夜雨的安全笔记</title>
+  <title>pikachu靶场实战之暴力破解（1） - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -59,12 +59,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/Grinlcm/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/Grinlcm/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/Grinlcm/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -73,15 +73,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"github.com","root":"/Grinlcm/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"eMQ0QW9NDWRc9H9YSH9guNP6-gzGzoHsz","app_key":"y3cQ01vcTKTEMOkMOxTx8mJ1","server_url":"https://emq0qw9n.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/Grinlcm/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"eMQ0QW9NDWRc9H9YSH9guNP6-gzGzoHsz","app_key":"y3cQ01vcTKTEMOkMOxTx8mJ1","server_url":"https://emq0qw9n.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/Grinlcm/js/utils.js" ></script>
-  <script  src="/Grinlcm/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
   
@@ -115,7 +115,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/Grinlcm/">
+    <a class="navbar-brand" href="/">
       <strong>夜雨的安全笔记</strong>
     </a>
 
@@ -134,7 +134,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/Grinlcm/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -146,7 +146,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/Grinlcm/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -158,7 +158,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/Grinlcm/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -170,7 +170,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/Grinlcm/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -182,7 +182,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/Grinlcm/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -211,7 +211,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/Grinlcm/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -306,11 +306,11 @@
 <p>作为像我这种的安全新手，用 Pikachu 入门再好不过了，可供漏洞种类比较多，而且还免费，话不多说，直接开干。</p>
 <h3 id="暴力破解概述"><a href="#暴力破解概述" class="headerlink" title="暴力破解概述"></a>暴力破解概述</h3><p>暴力破解即账号枚举, 攻击者使用自己的用户名和密码字典,对目的服务器进行一个一个尝试登陆,如果字典足够强大,最终就会猜解成功获取到用户名和密码。</p>
 <h2 id="0x01-基于表单的暴力破解"><a href="#0x01-基于表单的暴力破解" class="headerlink" title="0x01 基于表单的暴力破解"></a>0x01 基于表单的暴力破解</h2><p>第一道题比较简单，前后端都没有验证码，输入错误的账号密码会返回一个<code>username or password is not exists</code>的提示。</p>
-<p><img src="https://image.yeyusec.com/img/202208222324751.jpg" srcset="/Grinlcm/img/loading.gif" lazyload alt="baopo001"></p>
-<p>那么，破解的思路就很清晰了，直接使用 burpsuite 的 intruder 进行账号密码暴力破解即可，字典的话，Github上这个字典库貌似很全，<a href="https://github.com/TheKingOfDuck/fuzzDicts">https://github.com/TheKingOfDuck/fuzzDicts</a> 。</p>
-<p><img src="https://image.yeyusec.com/img/202208222342373.jpg" srcset="/Grinlcm/img/loading.gif" lazyload alt="baopo002"></p>
+<p><img src="https://image.yeyusec.com/img/202208222324751.jpg" srcset="/img/loading.gif" lazyload alt="baopo001"></p>
+<p>那么，破解的思路就很清晰了，直接使用 burpsuite 的 intruder 进行账号密码暴力破解即可，字典的话，Github上这个字典库貌似很全，<a target="_blank" rel="noopener" href="https://github.com/TheKingOfDuck/fuzzDicts">https://github.com/TheKingOfDuck/fuzzDicts</a> 。</p>
+<p><img src="https://image.yeyusec.com/img/202208222342373.jpg" srcset="/img/loading.gif" lazyload alt="baopo002"></p>
 <p>抓包，将登录页面发送至 intruder ，并在 Positions 中将 username 和 password 设置为 payload，攻击方式选择 Cluster bomb。</p>
-<p><img src="https://image.yeyusec.com/img/202208222342010.jpg" srcset="/Grinlcm/img/loading.gif" lazyload alt="baopo003"></p>
+<p><img src="https://image.yeyusec.com/img/202208222342010.jpg" srcset="/img/loading.gif" lazyload alt="baopo003"></p>
 <blockquote>
 <p>burpsuite 有四种 attack type（攻击方式），分别是</p>
 <ol>
@@ -320,31 +320,31 @@
 <li>Cluster bomb（集束炸弹）<br> 多参数做笛卡尔乘积模式爆破。多个密码本对应多个位置，交叉组合，每一个密码本里的密码都对应于另一密码本所有密码。常用于爆破账号密码。</li>
 </ol>
 </blockquote>
-<p><img src="https://image.yeyusec.com/img/202208222342731.jpg" srcset="/Grinlcm/img/loading.gif" lazyload alt="baopo004"></p>
+<p><img src="https://image.yeyusec.com/img/202208222342731.jpg" srcset="/img/loading.gif" lazyload alt="baopo004"></p>
 <p>接着在 Payloads 模块将两个参数的字典导入，选择 Simple list 模式。</p>
-<p><img src="https://image.yeyusec.com/img/202208222342183.jpg" srcset="/Grinlcm/img/loading.gif" lazyload alt="baopo005"></p>
+<p><img src="https://image.yeyusec.com/img/202208222342183.jpg" srcset="/img/loading.gif" lazyload alt="baopo005"></p>
 <p>由于登录失败有明显的提示，可以将 <code>username or password is not exists</code> 加入到 Grep match 中对尝试登录的结果进行筛选。</p>
-<p><img src="https://image.yeyusec.com/img/202208222342959.jpg" srcset="/Grinlcm/img/loading.gif" lazyload alt="baopo006"></p>
+<p><img src="https://image.yeyusec.com/img/202208222342959.jpg" srcset="/img/loading.gif" lazyload alt="baopo006"></p>
 <p>因为导入的账号和密码字典都是 Top500， 根据 Cluste bomb 攻击模式的特性，尝试爆破次数高达 25 万次。我这小破电脑要跑很久了。下一关就直接用提示的账号密码了，不然要跑太久了。</p>
-<p><img src="https://image.yeyusec.com/img/202208222347300.jpeg" srcset="/Grinlcm/img/loading.gif" lazyload alt="baopo007">最终筛选出 ’admin&#x2F;123456‘ ，’pikachu&#x2F;000000‘，’test&#x2F;abc123‘，这三组密码（ps: pikachu不在字典里，自己加的，哈哈)</p>
+<p><img src="https://image.yeyusec.com/img/202208222347300.jpeg" srcset="/img/loading.gif" lazyload alt="baopo007">最终筛选出 ’admin&#x2F;123456‘ ，’pikachu&#x2F;000000‘，’test&#x2F;abc123‘，这三组密码（ps: pikachu不在字典里，自己加的，哈哈)</p>
 <h2 id="0x02-验证码绕过-on-server"><a href="#0x02-验证码绕过-on-server" class="headerlink" title="0x02 验证码绕过(on server)"></a>0x02 验证码绕过(on server)</h2><p>这关相比第一关多了个验证码，这也是实际操作中经常遇到的。</p>
-<p><img src="https://image.yeyusec.com/img/202208222343739.jpg" srcset="/Grinlcm/img/loading.gif" lazyload alt="baopo2-001"></p>
+<p><img src="https://image.yeyusec.com/img/202208222343739.jpg" srcset="/img/loading.gif" lazyload alt="baopo2-001"></p>
 <p>抓包可知再不改变验证码的情况下，用burp修改参数验证码一直有效，说明验证码没有跟随服务器更新，可以使用多次。那么接下来的操作步骤和第一关就差不多了。</p>
-<p><img src="https://image.yeyusec.com/img/202208222343670.jpg" srcset="/Grinlcm/img/loading.gif" lazyload alt="baopo2-002"></p>
+<p><img src="https://image.yeyusec.com/img/202208222343670.jpg" srcset="/img/loading.gif" lazyload alt="baopo2-002"></p>
 <p>设置参数。</p>
-<p><img src="https://image.yeyusec.com/img/202208222343537.jpg" srcset="/Grinlcm/img/loading.gif" lazyload alt="baopo2-003"></p>
+<p><img src="https://image.yeyusec.com/img/202208222343537.jpg" srcset="/img/loading.gif" lazyload alt="baopo2-003"></p>
 <p>直接攻击，然后就可以得到正确的账户密码了。</p>
 <h2 id="0x03-验证码绕过-on-client"><a href="#0x03-验证码绕过-on-client" class="headerlink" title="0x03 验证码绕过(on client)"></a>0x03 验证码绕过(on client)</h2><p>这关从网页源码可知验证码是前端生成，并且在前端进行校验，这就很离谱。直接抓包，改包，不经过前端就ok了，和上一关操作步骤一模一样。</p>
-<p><img src="https://image.yeyusec.com/img/202208222343776.jpg" srcset="/Grinlcm/img/loading.gif" lazyload alt="baopo3-001"></p>
+<p><img src="https://image.yeyusec.com/img/202208222343776.jpg" srcset="/img/loading.gif" lazyload alt="baopo3-001"></p>
 <h2 id="0x04-token防爆破"><a href="#0x04-token防爆破" class="headerlink" title="0x04 token防爆破?"></a>0x04 token防爆破?</h2><p>这关的要点在于加入了 token，token 的作用主要是为了防止CSRF（跨站脚本攻击）。</p>
-<p><img src="https://image.yeyusec.com/img/202208222344854.jpg" srcset="/Grinlcm/img/loading.gif" lazyload alt="baopo4-001"></p>
+<p><img src="https://image.yeyusec.com/img/202208222344854.jpg" srcset="/img/loading.gif" lazyload alt="baopo4-001"></p>
 <p>返回的页面中会携带下一次需要用到的token，那么直接每次请求的时候将 token 取出，带入到下一次请求中即可。</p>
 <p>这里我们的攻击模式需要选择为 Pitchfork。由于是一一对应的关系，字典还需要稍作调整。</p>
-<p><img src="https://image.yeyusec.com/img/202208222344183.jpg" srcset="/Grinlcm/img/loading.gif" lazyload alt="baopo4-002"></p>
+<p><img src="https://image.yeyusec.com/img/202208222344183.jpg" srcset="/img/loading.gif" lazyload alt="baopo4-002"></p>
 <p>注意由于是上一次的结果会带入到下一次尝试中，所有只能单线程运行，新版的burp是通过设置 resource pool来实现的。</p>
-<p><img src="https://image.yeyusec.com/img/202208222344606.png" srcset="/Grinlcm/img/loading.gif" lazyload alt="baopo4-003"></p>
+<p><img src="https://image.yeyusec.com/img/202208222344606.png" srcset="/img/loading.gif" lazyload alt="baopo4-003"></p>
 <p>另外，提取token使用的是 Grep Extract模块功能，直接选中token value值，即可直接生成提取表达式，贼方便！！！</p>
-<p><img src="https://image.yeyusec.com/img/202208222344752.jpg" srcset="/Grinlcm/img/loading.gif" lazyload alt="baopo4-004"></p>
+<p><img src="https://image.yeyusec.com/img/202208222344752.jpg" srcset="/img/loading.gif" lazyload alt="baopo4-004"></p>
 <p>最终也是成功获取账号密码，暴力破解关卡完结~~~</p>
 
                 
@@ -364,12 +364,12 @@
     
       <span class="category-chain">
         
-  <a href="/Grinlcm/categories/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/" class="category-chain-item">安全笔记</a>
+  <a href="/categories/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/" class="category-chain-item">安全笔记</a>
   
   
     <span>></span>
     
-  <a href="/Grinlcm/categories/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/" class="category-chain-item">靶场学习</a>
+  <a href="/categories/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/" class="category-chain-item">靶场学习</a>
   
   
 
@@ -386,7 +386,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/Grinlcm/tags/%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA-%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/">#漏洞靶场,暴力破解</a>
+        <a href="/tags/%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA-%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/">#漏洞靶场,暴力破解</a>
       
     </div>
   
@@ -399,7 +399,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>pikachu靶场实战之暴力破解（1）</div>
-      <div>https://github.com/Grinlcm/2022/08/18/安全笔记/靶场学习/pikachu靶场实战之暴力破解（1）/</div>
+      <div>http://example.com/2022/08/18/安全笔记/靶场学习/pikachu靶场实战之暴力破解（1）/</div>
     </div>
     <div class="license-meta">
       
@@ -443,7 +443,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/Grinlcm/2022/08/25/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8BXSS%E6%BC%8F%E6%B4%9E%EF%BC%882%EF%BC%89/" title="pikachu靶场实战之XSS漏洞（2）">
+                      <a href="/2022/08/25/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8BXSS%E6%BC%8F%E6%B4%9E%EF%BC%882%EF%BC%89/" title="pikachu靶场实战之XSS漏洞（2）">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">pikachu靶场实战之XSS漏洞（2）</span>
                         <span class="visible-mobile">上一篇</span>
@@ -453,7 +453,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Grinlcm/2022/08/04/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/uoload-labs%E9%9D%B6%E5%9C%BA%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E9%80%9A%E5%85%B3%E4%B9%8B%E8%B7%AF%EF%BC%881%EF%BC%89/" title="uoload-labs靶场文件上传漏洞通关之路（1）">
+                      <a href="/2022/08/04/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/uoload-labs%E9%9D%B6%E5%9C%BA%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E9%80%9A%E5%85%B3%E4%B9%8B%E8%B7%AF%EF%BC%881%EF%BC%89/" title="uoload-labs靶场文件上传漏洞通关之路（1）">
                         <span class="hidden-mobile">uoload-labs靶场文件上传漏洞通关之路（1）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -616,8 +616,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/Grinlcm/js/events.js" ></script>
-<script  src="/Grinlcm/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -639,7 +639,7 @@
 
 
   
-    <script  src="/Grinlcm/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -738,9 +738,9 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script defer src="/Grinlcm/js/leancloud.js" ></script>
+  <script defer src="/js/leancloud.js" ></script>
 
-  <script  src="/Grinlcm/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -748,7 +748,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/Grinlcm/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   
