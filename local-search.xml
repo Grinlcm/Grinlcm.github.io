@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>模板文件</title>
+    <link href="/2022/09/17/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/%E6%A8%A1%E6%9D%BF%E6%96%87%E4%BB%B6/"/>
+    <url>/2022/09/17/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/%E6%A8%A1%E6%9D%BF%E6%96%87%E4%BB%B6/</url>
+    
+    <content type="html"><![CDATA[<p>简单记录下网站的分录以及标签规划，便于撰写文档时加以参考。</p><h2 id="我的分类"><a href="#我的分类" class="headerlink" title="我的分类"></a>我的分类</h2><p>安全笔记： sec-notebook<br>考证之路： research-road<br>随想杂谈：talking<br>学习资源：learning</p><h2 id="我的标签"><a href="#我的标签" class="headerlink" title="我的标签"></a>我的标签</h2><p>安全笔记：web安全、二进制安全、漏洞分析、安全工具、渗透测试<br>考证之路： CISSP， 阿里云ACP<br>随想杂谈：海角天涯<br>学习资源：工具集合，资料整合, 杂七杂八</p><h2 id="字段说明"><a href="#字段说明" class="headerlink" title="字段说明"></a>字段说明</h2><ul><li>sticky： 置顶文章</li></ul><h2 id="常用markdown语法"><a href="#常用markdown语法" class="headerlink" title="常用markdown语法"></a>常用markdown语法</h2><h3 id="块元素"><a href="#块元素" class="headerlink" title="块元素"></a>块元素</h3><p>1.引用文字<br>Markdown 使用电子邮件样式&gt;字符进行块引用。它们表示为：</p><blockquote><p>这是一段引用的文字   </p></blockquote><p>2.任务列表<br>任务列表是标记为[ ]或[x]（未完成或完成）的项目的列表。例如：</p><ul><li><input disabled="" type="checkbox"> 这是一个任务列表项</li><li><input checked="" disabled="" type="checkbox"> 这是一个完成的列表项</li></ul><p>3.代码块<br>使用代码块很简单，输入’‘’之后在输入可选的语言标识符，然后按return键后输入代码，我们将通过语法高亮显示它：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;hello world&#x27;</span>)<br></code></pre></td></tr></table></figure><h3 id="span元素"><a href="#span元素" class="headerlink" title="span元素"></a>span元素</h3><p>1.链接<br>Markdown 支持两种类型的链接：内联和引用。在这两种样式中，链接文本都写在[方括号]内。</p><p>要创建内联链接，请在链接文本的结束方括号后立即使用一组常规括号。在常规括号内，输入URL地址，以及可选的用引号括起来的链接标题。例如：</p><p>This is <a href="http://example.com/" title="Title">an example</a> inline link.<br><a href="http://example.net/">This link</a> has no title attribute.</p><p>2.图片<br>图片和链接类似，只是需要添加一个额外的！字符，例如：<br><img src="/path/to/img.jpg" alt="替代文字"><br><img src="/path/to/img.jpg" alt="替代文字" title="可选标题"></p><p>3.斜体<br>一般使用星号用作斜体的强调。例如：<br><em>这是个重点</em></p><p>4.粗体<br>使用两个星号就是加粗，例如：<br><strong>这是个大重点</strong></p><p>5.段落中代码<br>段落中代码使用单个反引号进行包裹即可，例如：<br>请使用<code>print()</code>函数</p><p>6.删除线<br>删除线就是两个波浪号，例如：<br>~~这段文字被删除了</p><p>7.下划线<br>下划线就是&lt;u&gt;这个来实现，例如：<br><u>这是个下划线</u></p><p>8.表情符号<br>输入表情符号的语法是 :smile:</p><p>用户可以通过 ESC 按键触发表情符号的自动完成建议，或者在偏好设置面板里启用后自动触发表情符号。此外，还支持直接从 Edit -&gt; Emoji &amp; Symbols 菜单栏输入UTF8表情符号字符。</p><p>这些大概就够用了，待补充。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>杂七杂八</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>模板文件</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>pikachu靶场实战之XSS漏洞（2）</title>
     <link href="/2022/08/25/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8BXSS%E6%BC%8F%E6%B4%9E%EF%BC%882%EF%BC%89/"/>
     <url>/2022/08/25/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8BXSS%E6%BC%8F%E6%B4%9E%EF%BC%882%EF%BC%89/</url>
@@ -79,25 +104,6 @@
       <tag>漏洞靶场,文件上传</tag>
       
     </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>模板文件</title>
-    <link href="/2022/07/28/%E5%AE%89%E5%85%A8%E5%B7%A5%E5%85%B7/%E6%A8%A1%E6%9D%BF%E6%96%87%E4%BB%B6/"/>
-    <url>/2022/07/28/%E5%AE%89%E5%85%A8%E5%B7%A5%E5%85%B7/%E6%A8%A1%E6%9D%BF%E6%96%87%E4%BB%B6/</url>
-    
-    <content type="html"><![CDATA[<p>简单记录下网站的分录以及标签规划，便于撰写文档时加以参考。</p><h2 id="我的分类"><a href="#我的分类" class="headerlink" title="我的分类"></a>我的分类</h2><p>安全笔记： sec-notebook<br>考证之路： research-road<br>随想杂谈：talking<br>学习资源：learning</p><h2 id="我的标签"><a href="#我的标签" class="headerlink" title="我的标签"></a>我的标签</h2><p>安全笔记：web安全、二进制安全、漏洞分析、安全工具、渗透测试<br>考证之路： CISSP， 阿里云ACP<br>随想杂谈：海角天涯<br>学习资源：工具集合，资料整合, 杂七杂八</p><h2 id="字段说明"><a href="#字段说明" class="headerlink" title="字段说明"></a>字段说明</h2><ul><li>sticky： 置顶文章</li></ul><h2 id="常用markdown语法"><a href="#常用markdown语法" class="headerlink" title="常用markdown语法"></a>常用markdown语法</h2><h3 id="块元素"><a href="#块元素" class="headerlink" title="块元素"></a>块元素</h3><p>1.引用文字<br>Markdown 使用电子邮件样式&gt;字符进行块引用。它们表示为：</p><blockquote><p>这是一段引用的文字   </p></blockquote><p>2.任务列表<br>任务列表是标记为[ ]或[x]（未完成或完成）的项目的列表。例如：</p><ul><li><input disabled="" type="checkbox"> 这是一个任务列表项</li><li><input checked="" disabled="" type="checkbox"> 这是一个完成的列表项</li></ul><p>3.代码块<br>使用代码块很简单，输入’‘’之后在输入可选的语言标识符，然后按return键后输入代码，我们将通过语法高亮显示它：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;hello world&#x27;</span>)<br></code></pre></td></tr></table></figure><h3 id="span元素"><a href="#span元素" class="headerlink" title="span元素"></a>span元素</h3><p>1.链接<br>Markdown 支持两种类型的链接：内联和引用。在这两种样式中，链接文本都写在[方括号]内。</p><p>要创建内联链接，请在链接文本的结束方括号后立即使用一组常规括号。在常规括号内，输入URL地址，以及可选的用引号括起来的链接标题。例如：</p><p>This is <a href="http://example.com/" title="Title">an example</a> inline link.<br><a href="http://example.net/">This link</a> has no title attribute.</p><p>2.图片<br>图片和链接类似，只是需要添加一个额外的！字符，例如：<br><img src="/path/to/img.jpg" alt="替代文字"><br><img src="/path/to/img.jpg" alt="替代文字" title="可选标题"></p><p>3.斜体<br>一般使用星号用作斜体的强调。例如：<br><em>这是个重点</em></p><p>4.粗体<br>使用两个星号就是加粗，例如：<br><strong>这是个大重点</strong></p><p>5.段落中代码<br>段落中代码使用单个反引号进行包裹即可，例如：<br>请使用<code>print()</code>函数</p><p>6.删除线<br>删除线就是两个波浪号，例如：<br>~~这段文字被删除了</p><p>7.下划线<br>下划线就是&lt;u&gt;这个来实现，例如：<br><u>这是个下划线</u></p><p>8.表情符号<br>输入表情符号的语法是 :smile:</p><p>用户可以通过 ESC 按键触发表情符号的自动完成建议，或者在偏好设置面板里启用后自动触发表情符号。此外，还支持直接从 Edit -&gt; Emoji &amp; Symbols 菜单栏输入UTF8表情符号字符。</p><p>这些大概就够用了，待补充。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>学习资源</category>
-      
-    </categories>
-    
     
   </entry>
   
