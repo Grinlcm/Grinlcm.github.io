@@ -18,21 +18,34 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="XSS（跨站）漏洞概述Cross-Site Scripting 简称为“CSS”，为避免与前端叠成样式表的缩写”CSS”冲突，故又称XSS。一般XSS可以分为如下几种常见类型：  反射型XSS; 存储型XSS; DOM型XSS;XSS漏洞的形成原因是由于程序对输入和输出没有进行合适的处理，使得精心构造的字符在前端被浏览器当做有效代码而执行。  0x01 反射型XSS漏洞（get&#x2F;post">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2022/09/17/hello-world/index.html">
+<meta property="og:title" content="pikachu靶场实战之XSS漏洞（2）">
+<meta property="og:url" content="http://example.com/2022/08/25/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8BXSS%E6%BC%8F%E6%B4%9E%EF%BC%882%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="XSS（跨站）漏洞概述Cross-Site Scripting 简称为“CSS”，为避免与前端叠成样式表的缩写”CSS”冲突，故又称XSS。一般XSS可以分为如下几种常见类型：  反射型XSS; 存储型XSS; DOM型XSS;XSS漏洞的形成原因是由于程序对输入和输出没有进行合适的处理，使得精心构造的字符在前端被浏览器当做有效代码而执行。  0x01 反射型XSS漏洞（get&#x2F;post">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-09-17T07:24:35.792Z">
-<meta property="article:modified_time" content="2022-09-17T07:24:35.861Z">
+<meta property="og:image" content="https://image.yeyusec.com/img/202208250856586.jpg">
+<meta property="og:image" content="https://image.yeyusec.com/img/202208250857364.jpg">
+<meta property="og:image" content="https://image.yeyusec.com/img/202208250832424.png">
+<meta property="og:image" content="https://image.yeyusec.com/img/202208250839208.jpg">
+<meta property="og:image" content="https://image.yeyusec.com/img/202208250855627.jpg">
+<meta property="og:image" content="https://image.yeyusec.com/img/202208250855165.jpg">
+<meta property="og:image" content="https://image.yeyusec.com/img/202208260816087.jpg">
+<meta property="og:image" content="https://image.yeyusec.com/img/202208260820291.jpg">
+<meta property="og:image" content="https://image.yeyusec.com/img/202208260836464.jpg">
+<meta property="og:image" content="https://image.yeyusec.com/img/202208260837017.jpg">
+<meta property="og:image" content="https://image.yeyusec.com/img/202208260842538.jpg">
+<meta property="og:image" content="https://image.yeyusec.com/img/202208260848371.jpg">
+<meta property="article:published_time" content="2022-08-25T00:58:45.917Z">
+<meta property="article:modified_time" content="2022-08-26T01:10:38.161Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://image.yeyusec.com/img/202208250856586.jpg">
   
   
   
-  <title>Hello World - Hexo</title>
+  <title>pikachu靶场实战之XSS漏洞（2） - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -214,7 +227,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="pikachu靶场实战之XSS漏洞（2）"></span>
           
         </div>
 
@@ -225,8 +238,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-09-17 15:24" pubdate>
-          2022年9月17日 下午
+        <time datetime="2022-08-25 08:58" pubdate>
+          2022年8月25日 早上
         </time>
       </span>
     
@@ -237,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          367 字
+          1.4k 字
         
       </span>
     
@@ -248,7 +261,7 @@
         
         
         
-          4 分钟
+          12 分钟
         
       </span>
     
@@ -294,24 +307,53 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none">pikachu靶场实战之XSS漏洞（2）</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+                <h2 id="XSS（跨站）漏洞概述"><a href="#XSS（跨站）漏洞概述" class="headerlink" title="XSS（跨站）漏洞概述"></a>XSS（跨站）漏洞概述</h2><p>Cross-Site Scripting 简称为“CSS”，为避免与前端叠成样式表的缩写”CSS”冲突，故又称XSS。一般XSS可以分为如下几种常见类型：</p>
+<ol>
+<li>反射型XSS;</li>
+<li>存储型XSS;</li>
+<li>DOM型XSS;<br>XSS漏洞的形成原因是由于程序对输入和输出没有进行合适的处理，使得精心构造的字符在前端被浏览器当做有效代码而执行。</li>
+</ol>
+<h2 id="0x01-反射型XSS漏洞（get-x2F-post）"><a href="#0x01-反射型XSS漏洞（get-x2F-post）" class="headerlink" title="0x01 反射型XSS漏洞（get&#x2F;post）"></a>0x01 反射型XSS漏洞（get&#x2F;post）</h2><blockquote>
+<p>反射型XXS是一种非持久性的攻击，它指的是恶意攻击者往Web页面里插入恶意代码，当用户浏览&gt;该页之时，嵌入其中Web里面的html代码会被执行，从而达到恶意攻击用户的目的。这里插入的恶&gt;意代码并没有保存在目标网站，需要引诱用户点击一个链接到目标网站的恶意链接来实施攻击。</p>
+</blockquote>
+<p><img src="https://image.yeyusec.com/img/202208250856586.jpg" srcset="/img/loading.gif" lazyload alt="xss001"></p>
+<p>第一题 <code>&lt;script&gt;alert(1)&lt;/script&gt;</code>代码输入不进去，查看源代码可知是前端对字符数做了限制，<code>&lt;input class=&quot;xssr_in&quot; type=&quot;text&quot; maxlength=&quot;20&quot; name=&quot;message&quot;&gt;</code> 直接将maxlength改成100即可。</p>
+<p><img src="https://image.yeyusec.com/img/202208250857364.jpg" srcset="/img/loading.gif" lazyload alt="xss002"></p>
+<p>成功弹出。</p>
+<p><img src="https://image.yeyusec.com/img/202208250832424.png" srcset="/img/loading.gif" lazyload alt="image-20220825083230381"></p>
+<p>第二题是登录后，输入<code>&lt;script&gt;alert(1)&lt;/script&gt;</code>也是能弹出，查看源代码。</p>
+<p><img src="https://image.yeyusec.com/img/202208250839208.jpg" srcset="/img/loading.gif" lazyload alt="xss003"></p>
+<p>代码中就是将前端传入的参数原封不动的执行了，就存在xss漏洞。</p>
+<h2 id="0x02-存储型xss"><a href="#0x02-存储型xss" class="headerlink" title="0x02 存储型xss"></a>0x02 存储型xss</h2><p>存储型xss 顾名思义就是恶意脚本会同正常信息一起被存到数据库或者文件中，等到用户在访问这个页面时就会成为受害者，这种漏洞常见于论坛、博客以及留言板。</p>
+<p>直接上payload。</p>
+<p><img src="https://image.yeyusec.com/img/202208250855627.jpg" srcset="/img/loading.gif" lazyload alt="xss004"></p>
+<p>重新加载下页面，依旧会弹出。也是说每个访问该页面的用户都会受到攻击。</p>
+<p><img src="https://image.yeyusec.com/img/202208250855165.jpg" srcset="/img/loading.gif" lazyload alt="xss005"></p>
+<h2 id="0x03-DOM型xss"><a href="#0x03-DOM型xss" class="headerlink" title="0x03 DOM型xss"></a>0x03 DOM型xss</h2><p>DOM 型 XSS 其实是一种特殊类型的反射型 XSS，它是基于 DOM 文档对象模型的一种漏洞。<br>DOM 就是一个树状的模型，你可以编写 js 代码对树进行操作，比如获取节点的名称，增加一个元素等。DOM树长这样：</p>
+<p><img src="https://image.yeyusec.com/img/202208260816087.jpg" srcset="/img/loading.gif" lazyload alt="xss008"></p>
+<p>再回到题目本身，可以发现输入框输入的字符为未经过处理而是直接拼接的，代码是<code>&quot;&lt;a href=&#39;&quot;+str+&quot;&#39;&gt;what do you see?&lt;/a&gt;&quot;</code>，那么直接闭合前面的a标签，然后插入恶意代码即可。代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">&gt;<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&#x27;#&#x27;</span> <span class="hljs-attr">onmouseover</span>=<span class="hljs-string">&quot;alert(&#x27;xss&#x27;)&quot;</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p><img src="https://image.yeyusec.com/img/202208260820291.jpg" srcset="/img/loading.gif" lazyload alt="xss009"></p>
+<blockquote>
+<p>onmouseover事件：指鼠标移动都某个指点的HTML标签上，会出现什么效果。<br>onmouseout事件：指鼠标移出某个指点的HTML标签后，会出现什么效果。</p>
+</blockquote>
+<p>好，成功弹出。</p>
+<h2 id="0x04-xss之盲打"><a href="#0x04-xss之盲打" class="headerlink" title="0x04 xss之盲打"></a>0x04 xss之盲打</h2><p>xss盲打在我的理解就是遇见输入框就先输入个弹窗脚本试试，或许就有什么惊喜。</p>
+<p><img src="https://image.yeyusec.com/img/202208260836464.jpg" srcset="/img/loading.gif" lazyload alt="xss010"></p>
+<p>果不其然，在后台就有了新发现，弹窗成功。</p>
+<p><img src="https://image.yeyusec.com/img/202208260837017.jpg" srcset="/img/loading.gif" lazyload alt="xss011"></p>
+<h2 id="0x05-xss之过滤"><a href="#0x05-xss之过滤" class="headerlink" title="0x05 xss之过滤"></a>0x05 xss之过滤</h2><p>废话不多说，直接上payload<code>&lt;script&gt;alert(1)&lt;/script&gt;</code>，结果不出所料，直接被吞了。</p>
+<p><img src="https://image.yeyusec.com/img/202208260842538.jpg" srcset="/img/loading.gif" lazyload alt="xss012"></p>
+<p>推测是做了过滤，那就变一种方式再来。</p>
+<p><img src="https://image.yeyusec.com/img/202208260848371.jpg" srcset="/img/loading.gif" lazyload alt="xss013"></p>
+<p>看源码实际是利用正则将“&lt;script”替换为空。直接全部换成大写在弹出，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;<span class="hljs-variable constant_">SCRIPT</span>&gt;<span class="hljs-title function_">alert</span>(<span class="hljs-number">11</span>)&lt;<span class="hljs-variable constant_">SCRIPT</span>&gt;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -319,6 +361,27 @@
             <hr/>
             <div>
               <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/" class="category-chain-item">安全笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
   
   
 </div>
@@ -329,8 +392,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>http://example.com/2022/09/17/hello-world/</div>
+      <div>pikachu靶场实战之XSS漏洞（2）</div>
+      <div>http://example.com/2022/08/25/学习之路/pikachu靶场实战之XSS漏洞（2）/</div>
     </div>
     <div class="license-meta">
       
@@ -342,7 +405,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年9月17日</div>
+          <div>2022年8月25日</div>
         </div>
       
       
@@ -374,12 +437,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2022/09/17/hello-world/" title="Hello World">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/25/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8BXSS%E6%BC%8F%E6%B4%9E%EF%BC%882%EF%BC%89/" title="pikachu靶场实战之XSS漏洞（2）">
-                        <span class="hidden-mobile">pikachu靶场实战之XSS漏洞（2）</span>
+                      <a href="/2022/08/18/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8B%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%EF%BC%881%EF%BC%89/" title="pikachu靶场实战之暴力破解（1）">
+                        <span class="hidden-mobile">pikachu靶场实战之暴力破解（1）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
