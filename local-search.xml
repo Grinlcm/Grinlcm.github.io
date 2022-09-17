@@ -20,7 +20,7 @@
     
     <tags>
       
-      <tag>模板文件</tag>
+      <tag>说明文档</tag>
       
     </tags>
     
@@ -47,7 +47,9 @@
     
     <tags>
       
-      <tag>漏洞靶场,xss</tag>
+      <tag>漏洞靶场</tag>
+      
+      <tag>xss</tag>
       
     </tags>
     
@@ -74,7 +76,9 @@
     
     <tags>
       
-      <tag>漏洞靶场,暴力破解</tag>
+      <tag>漏洞靶场</tag>
+      
+      <tag>暴力破解</tag>
       
     </tags>
     
@@ -101,7 +105,9 @@
     
     <tags>
       
-      <tag>漏洞靶场,文件上传</tag>
+      <tag>漏洞靶场</tag>
+      
+      <tag>文件上传</tag>
       
     </tags>
     
