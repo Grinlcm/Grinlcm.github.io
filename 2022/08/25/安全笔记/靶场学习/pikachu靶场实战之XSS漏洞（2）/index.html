@@ -21,7 +21,7 @@
     <meta name="description" content="XSS（跨站）漏洞概述Cross-Site Scripting 简称为“CSS”，为避免与前端叠成样式表的缩写”CSS”冲突，故又称XSS。一般XSS可以分为如下几种常见类型：  反射型XSS; 存储型XSS; DOM型XSS;XSS漏洞的形成原因是由于程序对输入和输出没有进行合适的处理，使得精心构造的字符在前端被浏览器当做有效代码而执行。  0x01 反射型XSS漏洞（get&#x2F;post">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pikachu靶场实战之XSS漏洞（2）">
-<meta property="og:url" content="http://example.com/2022/08/25/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8BXSS%E6%BC%8F%E6%B4%9E%EF%BC%882%EF%BC%89/index.html">
+<meta property="og:url" content="https://www.yeyusec.com/2022/08/25/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8BXSS%E6%BC%8F%E6%B4%9E%EF%BC%882%EF%BC%89/index.html">
 <meta property="og:site_name" content="夜雨的安全笔记">
 <meta property="og:description" content="XSS（跨站）漏洞概述Cross-Site Scripting 简称为“CSS”，为避免与前端叠成样式表的缩写”CSS”冲突，故又称XSS。一般XSS可以分为如下几种常见类型：  反射型XSS; 存储型XSS; DOM型XSS;XSS漏洞的形成原因是由于程序对输入和输出没有进行合适的处理，使得精心构造的字符在前端被浏览器当做有效代码而执行。  0x01 反射型XSS漏洞（get&#x2F;post">
 <meta property="og:locale" content="zh_CN">
@@ -73,7 +73,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"eMQ0QW9NDWRc9H9YSH9guNP6-gzGzoHsz","app_key":"y3cQ01vcTKTEMOkMOxTx8mJ1","server_url":"https://emq0qw9n.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"www.yeyusec.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"eMQ0QW9NDWRc9H9YSH9guNP6-gzGzoHsz","app_key":"y3cQ01vcTKTEMOkMOxTx8mJ1","server_url":"https://emq0qw9n.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -397,7 +397,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>pikachu靶场实战之XSS漏洞（2）</div>
-      <div>http://example.com/2022/08/25/安全笔记/靶场学习/pikachu靶场实战之XSS漏洞（2）/</div>
+      <div>https://www.yeyusec.com/2022/08/25/安全笔记/靶场学习/pikachu靶场实战之XSS漏洞（2）/</div>
     </div>
     <div class="license-meta">
       
