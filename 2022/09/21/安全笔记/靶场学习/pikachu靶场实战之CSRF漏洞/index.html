@@ -20,14 +20,14 @@
   
     <meta name="description" content="CSRF（跨站请求伪造）漏洞概述Cross-site request forgery 简称为“CSRF”，在CSRF的攻击场景中攻击者会伪造一个请求（这个请求一般是一个链接），然后欺骗目标用户进行点击，用户一旦点击了这个请求，整个攻击就完成了。CSRF与XSS的区别：CSRF是借用户的权限完成攻击，攻击者并没有拿到用户的权限，而XSS是直接盗取到了用户的权限，然后实施破坏。 1.漏洞场景小黑想要修">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pikachu靶场实战之XSS漏洞（2）">
+<meta property="og:title" content="pikachu靶场实战之CSRF漏洞（3）">
 <meta property="og:url" content="https://www.yeyusec.com/2022/09/21/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8BCSRF%E6%BC%8F%E6%B4%9E/index.html">
 <meta property="og:site_name" content="夜雨的安全笔记">
 <meta property="og:description" content="CSRF（跨站请求伪造）漏洞概述Cross-site request forgery 简称为“CSRF”，在CSRF的攻击场景中攻击者会伪造一个请求（这个请求一般是一个链接），然后欺骗目标用户进行点击，用户一旦点击了这个请求，整个攻击就完成了。CSRF与XSS的区别：CSRF是借用户的权限完成攻击，攻击者并没有拿到用户的权限，而XSS是直接盗取到了用户的权限，然后实施破坏。 1.漏洞场景小黑想要修">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://image.yeyusec.com/img/202209171827605.jpeg">
 <meta property="article:published_time" content="2022-09-21T12:36:09.584Z">
-<meta property="article:modified_time" content="2022-09-21T12:35:48.516Z">
+<meta property="article:modified_time" content="2022-09-21T12:37:36.383Z">
 <meta property="article:author" content="yeyusec">
 <meta property="article:tag" content="漏洞靶场">
 <meta property="article:tag" content="CSRF">
@@ -36,7 +36,7 @@
   
   
   
-  <title>pikachu靶场实战之XSS漏洞（2） - 夜雨的安全笔记</title>
+  <title>pikachu靶场实战之CSRF漏洞（3） - 夜雨的安全笔记</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -218,7 +218,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="pikachu靶场实战之XSS漏洞（2）"></span>
+            <span id="subtitle" data-typed-text="pikachu靶场实战之CSRF漏洞（3）"></span>
           
         </div>
 
@@ -298,7 +298,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">pikachu靶场实战之XSS漏洞（2）</h1>
+            <h1 style="display: none">pikachu靶场实战之CSRF漏洞（3）</h1>
             
             
               <div class="markdown-body">
@@ -418,7 +418,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>pikachu靶场实战之XSS漏洞（2）</div>
+      <div>pikachu靶场实战之CSRF漏洞（3）</div>
       <div>https://www.yeyusec.com/2022/09/21/安全笔记/靶场学习/pikachu靶场实战之CSRF漏洞/</div>
     </div>
     <div class="license-meta">
