@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://image.yeyusec.com/img/202209171827605.jpeg">
 <meta property="article:published_time" content="2022-09-21T12:36:09.584Z">
-<meta property="article:modified_time" content="2022-09-21T12:37:36.383Z">
+<meta property="article:modified_time" content="2022-09-22T12:48:55.950Z">
 <meta property="article:author" content="yeyusec">
 <meta property="article:tag" content="漏洞靶场">
 <meta property="article:tag" content="CSRF">
@@ -304,7 +304,7 @@
               <div class="markdown-body">
                 
                 <h2 id="CSRF（跨站请求伪造）漏洞概述"><a href="#CSRF（跨站请求伪造）漏洞概述" class="headerlink" title="CSRF（跨站请求伪造）漏洞概述"></a>CSRF（跨站请求伪造）漏洞概述</h2><p>Cross-site request forgery 简称为“CSRF”，在CSRF的攻击场景中攻击者会伪造一个请求（这个请求一般是一个链接），然后欺骗目标用户进行点击，用户一旦点击了这个请求，整个攻击就完成了。<br>CSRF与XSS的区别：CSRF是借用户的权限完成攻击，攻击者并没有拿到用户的权限，而XSS是直接盗取到了用户的权限，然后实施破坏。</p>
-<h3 id="1-漏洞场景"><a href="#1-漏洞场景" class="headerlink" title="1.漏洞场景"></a>1.漏洞场景</h3><p>小黑想要修改大白在购物网站 <a target="_blank" rel="noopener" href="http://www.xx.com上填写的会员地址./">www.xx.com上填写的会员地址。</a><br>先看下大白是如何修改自己的密码的：<br>登录—修改会员信息，提交请求—修改成功。<br>所以小黑想要修改大白的信息，他需要拥有：1，登录权限 2，修改个人信息的请求。<br>但是大白又不会把自己xxx网站的账号密码告诉小黑，那小黑怎么办？<br>于是他自己跑到<a href="http://www.xx.com上注册了一个自己的账号，然后修改了一下自己的个人信息（比如：E-mail地址），他发现修改的请求是：">www.xx.com上注册了一个自己的账号，然后修改了一下自己的个人信息（比如：E-mail地址），他发现修改的请求是：</a><br>【<a target="_blank" rel="noopener" href="http://www.xxx.com/edit.php?email=xiaohei@88.com&amp;Change=Change%E3%80%91">http://www.xxx.com/edit.php?email=xiaohei@88.com&amp;Change=Change】</a><br>于是，他实施了这样一个操作：把这个链接伪装一下，在小白登录xxx网站后，欺骗他进行点击，小白点击这个链接后，个人信息就被修改了,小黑就完成了攻击目的。</p>
+<h3 id="1-漏洞场景"><a href="#1-漏洞场景" class="headerlink" title="1.漏洞场景"></a>1.漏洞场景</h3><p>小黑想要修改大白在购物网站 <a target="_blank" rel="noopener" href="http://www.xx.com上填写的会员地址./">www.xx.com上填写的会员地址。</a><br>先看下大白是如何修改自己的密码的：<br>登录—修改会员信息，提交请求—修改成功。<br>所以小黑想要修改大白的信息，他需要拥有：1，登录权限 2，修改个人信息的请求。<br>但是大白又不会把自己xxx网站的账号密码告诉小黑，那小黑怎么办？<br>于是他自己跑到<a href="http://www.xx.com上注册了一个自己的账号，然后修改了一下自己的个人信息（比如：E-mail地址），他发现修改的请求是：">www.xx.com上注册了一个自己的账号，然后修改了一下自己的个人信息（比如：E-mail地址），他发现修改的请求是：</a><br><code>http://www.xxx.com/edit.php?email=xiaohei@88.com&amp;Change=Change</code><br>于是，他实施了这样一个操作：把这个链接伪装一下，在小白登录xxx网站后，欺骗他进行点击，小白点击这个链接后，个人信息就被修改了,小黑就完成了攻击目的。</p>
 <h3 id="2-CSRF的攻击条件"><a href="#2-CSRF的攻击条件" class="headerlink" title="2.CSRF的攻击条件"></a>2.CSRF的攻击条件</h3><p>（1）目标网站对关键信息的操作（增删改）是否容易被伪造。</p>
 <p>（2）登录态，如果用户不是登录状态，即使点击了伪造的请求也没用。</p>
 <h3 id="3-CSRF和xss的区别"><a href="#3-CSRF和xss的区别" class="headerlink" title="3.CSRF和xss的区别"></a>3.CSRF和xss的区别</h3><p>CSRF是借用户的权限完成攻击，攻击者并没有拿到用户的权限，而XSS是直接盗取到了用户的权限，然后实施破坏。也就是说如果目标站点有xss漏洞，则攻击者可以欺骗用户访问有xss脚本的页面（盗取cookie），然后攻击者可以拿到用户的权限直接登录自己修改。</p>
