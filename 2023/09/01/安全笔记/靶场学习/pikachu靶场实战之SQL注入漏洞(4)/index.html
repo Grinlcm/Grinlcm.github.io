@@ -18,25 +18,25 @@
   <meta name="author" content="yeyusec">
   <meta name="keywords" content="">
   
-    <meta name="description" content="CSRF（跨站请求伪造）漏洞概述Cross-site request forgery 简称为“CSRF”，在CSRF的攻击场景中攻击者会伪造一个请求（这个请求一般是一个链接），然后欺骗目标用户进行点击，用户一旦点击了这个请求，整个攻击就完成了。CSRF与XSS的区别：CSRF是借用户的权限完成攻击，攻击者并没有拿到用户的权限，而XSS是直接盗取到了用户的权限，然后实施破坏。 1.漏洞场景小黑想要修">
+    <meta name="description" content="SQL漏洞概述 SQL注入是指web应用程序对用户输入数据的合法性没有判断或过滤不严，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。  常见的SQL注入根据注入方式可分为：  盲注  Error 报错注入 Time 时间盲住 Union 注入 内联查询注">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pikachu靶场实战之CSRF漏洞（3）">
-<meta property="og:url" content="https://www.yeyusec.com/2022/09/21/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8BCSRF%E6%BC%8F%E6%B4%9E/index.html">
+<meta property="og:title" content="pikachu靶场实战之SQL注入漏洞（4）">
+<meta property="og:url" content="https://www.yeyusec.com/2023/09/01/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8BSQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E(4)/index.html">
 <meta property="og:site_name" content="夜雨的安全笔记">
-<meta property="og:description" content="CSRF（跨站请求伪造）漏洞概述Cross-site request forgery 简称为“CSRF”，在CSRF的攻击场景中攻击者会伪造一个请求（这个请求一般是一个链接），然后欺骗目标用户进行点击，用户一旦点击了这个请求，整个攻击就完成了。CSRF与XSS的区别：CSRF是借用户的权限完成攻击，攻击者并没有拿到用户的权限，而XSS是直接盗取到了用户的权限，然后实施破坏。 1.漏洞场景小黑想要修">
+<meta property="og:description" content="SQL漏洞概述 SQL注入是指web应用程序对用户输入数据的合法性没有判断或过滤不严，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。  常见的SQL注入根据注入方式可分为：  盲注  Error 报错注入 Time 时间盲住 Union 注入 内联查询注">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://image.yeyusec.com/img/202209171827605.jpeg">
-<meta property="article:published_time" content="2022-09-21T12:36:09.584Z">
-<meta property="article:modified_time" content="2022-09-22T13:01:08.576Z">
+<meta property="article:published_time" content="2023-09-01T15:00:56.414Z">
+<meta property="article:modified_time" content="2022-09-30T09:25:55.800Z">
 <meta property="article:author" content="yeyusec">
 <meta property="article:tag" content="漏洞靶场">
-<meta property="article:tag" content="CSRF">
+<meta property="article:tag" content="SQL注入">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://image.yeyusec.com/img/202209171827605.jpeg">
   
   
   
-  <title>pikachu靶场实战之CSRF漏洞（3） - 夜雨的安全笔记</title>
+  <title>pikachu靶场实战之SQL注入漏洞（4） - 夜雨的安全笔记</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -218,7 +218,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="pikachu靶场实战之CSRF漏洞（3）"></span>
+            <span id="subtitle" data-typed-text="pikachu靶场实战之SQL注入漏洞（4）"></span>
           
         </div>
 
@@ -229,8 +229,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-09-21 20:36" pubdate>
-          2022年9月21日 晚上
+        <time datetime="2023-09-01 23:00" pubdate>
+          2023年9月1日 晚上
         </time>
       </span>
     
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.5k 字
+          4k 字
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          29 分钟
+          34 分钟
         
       </span>
     
@@ -298,33 +298,58 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">pikachu靶场实战之CSRF漏洞（3）</h1>
+            <h1 style="display: none">pikachu靶场实战之SQL注入漏洞（4）</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="CSRF（跨站请求伪造）漏洞概述"><a href="#CSRF（跨站请求伪造）漏洞概述" class="headerlink" title="CSRF（跨站请求伪造）漏洞概述"></a>CSRF（跨站请求伪造）漏洞概述</h2><p>Cross-site request forgery 简称为“CSRF”，在CSRF的攻击场景中攻击者会伪造一个请求（这个请求一般是一个链接），然后欺骗目标用户进行点击，用户一旦点击了这个请求，整个攻击就完成了。<br>CSRF与XSS的区别：CSRF是借用户的权限完成攻击，攻击者并没有拿到用户的权限，而XSS是直接盗取到了用户的权限，然后实施破坏。</p>
-<h3 id="1-漏洞场景"><a href="#1-漏洞场景" class="headerlink" title="1.漏洞场景"></a>1.漏洞场景</h3><p>小黑想要修改大白在购物网站 <code>www.xx.com</code>上填写的会员地址。<br>先看下大白是如何修改自己的密码的：<br>登录—修改会员信息，提交请求—修改成功。<br>所以小黑想要修改大白的信息，他需要拥有：1，登录权限 2，修改个人信息的请求。<br>但是大白又不会把自己xxx网站的账号密码告诉小黑，那小黑怎么办？<br>于是他自己跑到<code>www.xx.com</code>上注册了一个自己的账号，然后修改了一下自己的个人信息（比如：E-mail地址），他发现修改的请求是：<br><code>http://www.xxx.com/edit.php?email=xiaohei@88.com&amp;Change=Change</code><br>于是，他实施了这样一个操作：把这个链接伪装一下，在小白登录xxx网站后，欺骗他进行点击，小白点击这个链接后，个人信息就被修改了,小黑就完成了攻击目的。</p>
-<h3 id="2-CSRF的攻击条件"><a href="#2-CSRF的攻击条件" class="headerlink" title="2.CSRF的攻击条件"></a>2.CSRF的攻击条件</h3><p>（1）目标网站对关键信息的操作（增删改）是否容易被伪造。</p>
-<p>（2）登录态，如果用户不是登录状态，即使点击了伪造的请求也没用。</p>
-<h3 id="3-CSRF和xss的区别"><a href="#3-CSRF和xss的区别" class="headerlink" title="3.CSRF和xss的区别"></a>3.CSRF和xss的区别</h3><p>CSRF是借用户的权限完成攻击，攻击者并没有拿到用户的权限，而XSS是直接盗取到了用户的权限，然后实施破坏。也就是说如果目标站点有xss漏洞，则攻击者可以欺骗用户访问有xss脚本的页面（盗取cookie），然后攻击者可以拿到用户的权限直接登录自己修改。</p>
-<h3 id="4-如何确认站点有没有CSRF漏洞"><a href="#4-如何确认站点有没有CSRF漏洞" class="headerlink" title="4.如何确认站点有没有CSRF漏洞"></a>4.如何确认站点有没有CSRF漏洞</h3><p>关键在于对目标站点有增删改查的地方进行查看，看请求是否容易被伪造。</p>
-<p>手工的话：</p>
-<blockquote>
-<p>检测CSRF漏洞是一项比较繁琐的工作，最简单的方法就是抓取一个正常请求的数据包，去掉Referer字段后再重新提交，如果该提交还有效，那么基本上可以确定存在CSRF漏洞。</p>
+                <h2 id="SQL漏洞概述"><a href="#SQL漏洞概述" class="headerlink" title="SQL漏洞概述"></a>SQL漏洞概述</h2><blockquote>
+<p>SQL注入是指web应用程序对用户输入数据的合法性没有判断或过滤不严，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。</p>
 </blockquote>
-<p>工具检测,常用工具有burp，CSRFTester：</p>
+<p>常见的SQL注入根据注入方式可分为：</p>
+<ul>
+<li>盲注 </li>
+<li>Error 报错注入</li>
+<li>Time 时间盲住</li>
+<li>Union 注入</li>
+<li>内联查询注入</li>
+<li>拼接（堆）查询注入</li>
+</ul>
+<h3 id="1-漏洞产生的原因"><a href="#1-漏洞产生的原因" class="headerlink" title="1.漏洞产生的原因"></a>1.漏洞产生的原因</h3><p>SQL注入漏洞主要形成的原因是在数据交互中，前端的数据传入到后台处理时，没有做严格的判断，导致其传入的“数据”拼接到SQL语句中后，被当作SQL语句的一部分执行。 从而导致数据库受损（被脱裤、被删除、甚至整个服务器权限沦陷）。</p>
+<h3 id="2-如何检测SQL注入的存在"><a href="#2-如何检测SQL注入的存在" class="headerlink" title="2.如何检测SQL注入的存在"></a>2.如何检测SQL注入的存在</h3><p>因为SQL注入常发生于用户和服务交互处（增删改查操作）,AJAX,API接口等等,可以重点检测这些地方有无SQL注入漏洞。</p>
+<p>白盒测试：<br>1） 关键词匹配，找到SQL语句后看调用方式，变量值得传递以及是否有安全校验；<br>2）框架和代码结构查看，看代码对请求进行路由和分发的方式，路由分发方式的设计和实现是否存在隐患；<br>3）了解业务实现的方式以及设计的思路。</p>
+<p>黑盒测试：<br>构建特殊的SQL注入语句在用户的输入点进行手工注入，或者直接用自动化注入工具如sqlmap。</p>
+<h3 id="3-SQL注入的利用条件，影响以及危害"><a href="#3-SQL注入的利用条件，影响以及危害" class="headerlink" title="3.SQL注入的利用条件，影响以及危害"></a>3.SQL注入的利用条件，影响以及危害</h3><p>利用条件比较低，危害较大，例如数据库被拖库,管理员和重要人员信息泄露,甚至还能通过SQL注入漏洞直接获取webshell或者执行命令导致服务器系统权限被获取等等。</p>
+<h3 id="4-SQL注入如何防范以及修复"><a href="#4-SQL注入如何防范以及修复" class="headerlink" title="4.SQL注入如何防范以及修复"></a>4.SQL注入如何防范以及修复</h3><p>在构建代码时，一般会从如下几个方面的策略来防止SQL注入漏洞：<br>1.对传进SQL语句里面的变量进行过滤，不允许危险字符传入；<br>2.使用参数化（Parameterized Query 或 Parameterized Statement）；<br>3.还有就是,目前有很多ORM框架会自动使用参数化解决注入问题,但其也提供了”拼接”的方式,所以使用时需要慎重!<br>在日常的监控时，一般采用日志监控+WAF的形式（统一的filter），部署防SQL注入的系统等。</p>
+<h2 id="0x01-数字型注入-post"><a href="#0x01-数字型注入-post" class="headerlink" title="0x01 数字型注入(post)"></a>0x01 数字型注入(post)</h2><p>sql手工注入常规的流程如下，具体的可参考这篇《sql注入——手工注入》 <a target="_blank" rel="noopener" href="https://anchorety.github.io/2020/01/18/sql%E6%B3%A8%E5%85%A5%E2%80%94%E2%80%94%E6%89%8B%E5%B7%A5%E6%B3%A8%E5%85%A5/%EF%BC%9A">https://anchorety.github.io/2020/01/18/sql%E6%B3%A8%E5%85%A5%E2%80%94%E2%80%94%E6%89%8B%E5%B7%A5%E6%B3%A8%E5%85%A5/：</a> ，里面详细的说明了SQL手工注入的各个步骤：<br>1.注入点测试；<br>注入点测试主要分为是否存在sql注入检测与sql注入类型检测两个部分。<br>2.当前表列数测试；<br>3.测试当前表哪些列有回显；<br>4.查询数据库名称；</p>
+<p><img src="https://image.yeyusec.com/img/202209301559746.jpg" srcset="/img/loading.gif" lazyload alt="sql表"><br>5.数据库表名获取；<br>6.字段获取；<br>7.读取关键字段；</p>
+<p>下面以数字型注入为例简单说明下以上的几个步骤。</p>
+<h4 id="第一步是注入点测试："><a href="#第一步是注入点测试：" class="headerlink" title="第一步是注入点测试："></a>第一步是注入点测试：</h4><p><img src="https://image.yeyusec.com/img/202209301606935.jpg" srcset="/img/loading.gif" lazyload alt="sqlpost"></p>
+<p><img src="https://image.yeyusec.com/img/202209301607081.jpeg" srcset="/img/loading.gif" lazyload></p>
+<p>依旧是burp抓包，改包，传入个<code>id=2&#39;</code>看看，报错了,证明这里可能有SQL注入，数字型注入的话可以通过<code>1 and 1=1</code>未报错，以及<code>1 and 1=2</code>来判断。</p>
+<p><img src="https://image.yeyusec.com/img/202209301610136.jpg" srcset="/img/loading.gif" lazyload alt="sql001"><br>页面运行正常，继续下一步。</p>
+<p><img src="https://image.yeyusec.com/img/202209301610852.jpg" srcset="/img/loading.gif" lazyload alt="sql002"></p>
+<p>页面报错，很明显，这是个数字型注入。</p>
 <blockquote>
-<p>以CSRFTester工具为例，CSRF漏洞检测工具的测试原理如下：使用CSRFTester进行测试时，首先需要抓取我们在浏览器中访问过的所有链接以及所有的表单等信息，然后通过在CSRFTester中修改相应的表单等信息，重新提交，这相当于一次伪造客户端请求。如果修改后的测试请求成功被网站服务器接受，则说明存在CSRF漏洞，当然此款工具也可以被用来进行CSRF攻击。</p>
+<p>如果当前注入点类型为数字型，</p>
+<ul>
+<li><p>当输入 and 1&#x3D;1时，后台执行 Sql 语句：select * from &lt;表名&gt; where id &#x3D; x and 1&#x3D;1,没有语法错误且逻辑判断为正确，所以返回正常。</p>
+</li>
+<li><p>当输入 and 1&#x3D;2时，后台执行 Sql 语句：select * from &lt;表名&gt; where id &#x3D; x and 1&#x3D;2,没有语法错误但是逻辑判断为假，所以返回错误。</p>
+</li>
+</ul>
+<p>而如果该注入点类型为字符型，</p>
+<ul>
+<li>当输入and 1&#x3D;1和 and 1&#x3D;2时，后台执行sql语句：select * from &lt;表名&gt; where id&#x3D;’x and 1&#x3D;1’和 select * from &lt;表名&gt; where id&#x3D;’x and 1&#x3D;1,将and语句作为字符进行id匹配，应该都没有查询结果，与事实不符因此该注入点为数字型注入点。</li>
+</ul>
 </blockquote>
-<h2 id="0x01-CSRF（get类型）"><a href="#0x01-CSRF（get类型）" class="headerlink" title="0x01 CSRF（get类型）"></a>0x01 CSRF（get类型）</h2><p>直接用burp抓包，发现该网站更新用户信息使用的是get请求，那么如果我们将请求复制下来，将里面要修改的信息替换掉诱导用户去点击，即可完成CSRF攻击。</p>
-<p><img src="https://image.yeyusec.com/img/202209200838082.jpg" srcset="/img/loading.gif" lazyload alt="csrf001"></p>
-<p>比如原来的用户性别为boy，那么我们可以构造如下的链接：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">192.168</span><span class="hljs-number">.0</span><span class="hljs-number">.106</span>:<span class="hljs-number">8097</span>/vul/csrf/csrfget/csrf_get_edit.<span class="hljs-property">php</span>?sex=dabandan&amp;phonenum=<span class="hljs-number">18626545453</span>&amp;add=zhejiang&amp;email=vince%40pikachu.<span class="hljs-property">com</span>&amp;submit=submit <br></code></pre></td></tr></table></figure>
-
-<p>然后诱导用户去点击，那么用户的性别信息就变成了‘dabendan’。</p>
-<p><img src="https://image.yeyusec.com/img/202209200841876.jpg" srcset="/img/loading.gif" lazyload alt="csrf002"></p>
-<h2 id="0x02-CSRF（post类型）"><a href="#0x02-CSRF（post类型）" class="headerlink" title="0x02 CSRF（post类型）"></a>0x02 CSRF（post类型）</h2><p>post请求不同于get，它将要修改的信息都放在请求体中，我们就没法通过伪造URL的方式来进行攻击。</p>
+<h4 id="第二步是当前表列数测试："><a href="#第二步是当前表列数测试：" class="headerlink" title="第二步是当前表列数测试："></a>第二步是当前表列数测试：</h4><p>注入的语句是<code>id=1 order by 1</code>，从1依次往后，直到出现运行错误。到3就报错了，说明只有两列。</p>
+<p><img src="https://image.yeyusec.com/img/202209301616650.jpg" srcset="/img/loading.gif" lazyload alt="sql003"></p>
+<h4 id="第三步是测试当前表哪些列有回显；"><a href="#第三步是测试当前表哪些列有回显；" class="headerlink" title="第三步是测试当前表哪些列有回显；"></a>第三步是测试当前表哪些列有回显；</h4><p>测试的语句是<code>id=1 union select 1,2</code>,上面测试有几列就写到几列，通过回显可以看到这两列都能回显。</p>
+<p><img src="https://image.yeyusec.com/img/202209301621534.jpg" srcset="/img/loading.gif" lazyload alt="sqlunion"></p>
+<h4 id="第四步是查询数据库名称；"><a href="#第四步是查询数据库名称；" class="headerlink" title="第四步是查询数据库名称；"></a>第四步是查询数据库名称；</h4><p>既然已经知道了显示位，那么将常用的函数代入查询即可。查询语句是<code>id=1 union select database(),user()</code>，可以看到数据库名称是 pikachu 。</p>
+<p><img src="https://image.yeyusec.com/img/202209301638892.jpg" srcset="/img/loading.gif" lazyload alt="sql004"></p>
+<h4 id="第五步是数据库表名获取："><a href="#第五步是数据库表名获取：" class="headerlink" title="第五步是数据库表名获取："></a>第五步是数据库表名获取：</h4><h2 id="0x02-CSRF（post类型）"><a href="#0x02-CSRF（post类型）" class="headerlink" title="0x02 CSRF（post类型）"></a>0x02 CSRF（post类型）</h2><p>post请求不同于get，它将要修改的信息都放在请求体中，我们就没法通过伪造URL的方式来进行攻击。</p>
 <p><img src="https://image.yeyusec.com/img/202209210016883.png" srcset="/img/loading.gif" lazyload></p>
 <p>那么，常用的攻击手法就是搭建一个有表单提交功能的服务器，然后诱导用户去点击。</p>
 <p>用户服务器是：192.168.0.106</p>
@@ -406,7 +431,7 @@
       
         <a href="/tags/%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA/">#漏洞靶场</a>
       
-        <a href="/tags/CSRF/">#CSRF</a>
+        <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">#SQL注入</a>
       
     </div>
   
@@ -418,8 +443,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>pikachu靶场实战之CSRF漏洞（3）</div>
-      <div>https://www.yeyusec.com/2022/09/21/安全笔记/靶场学习/pikachu靶场实战之CSRF漏洞/</div>
+      <div>pikachu靶场实战之SQL注入漏洞（4）</div>
+      <div>https://www.yeyusec.com/2023/09/01/安全笔记/靶场学习/pikachu靶场实战之SQL注入漏洞(4)/</div>
     </div>
     <div class="license-meta">
       
@@ -431,7 +456,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年9月21日</div>
+          <div>2023年9月1日</div>
         </div>
       
       
@@ -463,9 +488,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/01/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8BCSRF%E6%BC%8F%E6%B4%9E(3)/" title="pikachu靶场实战之CSRF漏洞（3）">
+                      <a href="/2023/09/01/%E8%BF%90%E7%BB%B4%E6%95%85%E4%BA%8B/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/windows%E5%92%8Clinux%E9%98%B2%E7%81%AB%E5%A2%99/" title="windows和linux防火墙的配置">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">pikachu靶场实战之CSRF漏洞（3）</span>
+                        <span class="hidden-mobile">windows和linux防火墙的配置</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -473,8 +498,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/09/17/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/%E6%A8%A1%E6%9D%BF%E6%96%87%E4%BB%B6/" title="模板文件">
-                        <span class="hidden-mobile">模板文件</span>
+                      <a href="/2023/09/01/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8BCSRF%E6%BC%8F%E6%B4%9E(3)/" title="pikachu靶场实战之CSRF漏洞（3）">
+                        <span class="hidden-mobile">pikachu靶场实战之CSRF漏洞（3）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
