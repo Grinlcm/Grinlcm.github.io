@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>AWS-SAP考证笔记（1）存储产品</title>
+    <link href="/2023/09/06/%E8%80%83%E8%AF%81%E4%B9%8B%E8%B7%AF/AWS-SAP/aws-sap%E8%80%83%E8%AF%81%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89%E5%AD%98%E5%82%A8%E4%BA%A7%E5%93%81/"/>
+    <url>/2023/09/06/%E8%80%83%E8%AF%81%E4%B9%8B%E8%B7%AF/AWS-SAP/aws-sap%E8%80%83%E8%AF%81%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89%E5%AD%98%E5%82%A8%E4%BA%A7%E5%93%81/</url>
+    
+    <content type="html"><![CDATA[<h2 id="一、Amazon-EC2-Auto-Scaling"><a href="#一、Amazon-EC2-Auto-Scaling" class="headerlink" title="一、Amazon EC2 Auto Scaling"></a>一、Amazon EC2 Auto Scaling</h2><h3 id="1、什么是-Amazon-EC2-Auto-Scaling？"><a href="#1、什么是-Amazon-EC2-Auto-Scaling？" class="headerlink" title="1、什么是 Amazon EC2 Auto Scaling？"></a>1、什么是 Amazon EC2 Auto Scaling？</h3><p>Amazon EC2 Auto Scaling 是一项完全托管的服务，可自动启动或终止 Amazon EC2 实例，以帮助确保您拥有适当数量的 Amazon EC2 实例来处理应用程序负载。Amazon EC2 Auto Scaling 通过对 EC2 实例进行队列管理，检测并替换运行状况异常的实例，并根据您定义的条件自动扩展或缩减 Amazon EC2 容量，从而帮助您保持应用程序的可用性。</p><h3 id="2、使用场景"><a href="#2、使用场景" class="headerlink" title="2、使用场景"></a>2、使用场景</h3><p>您应该使用 AWS Auto Scaling 来管理跨多项服务的多个资源的扩展。借助 AWS Auto Scaling，您可以使用预定义的扩展策略为多个 EC2 Auto Scaling 组或其他资源定义动态扩展策略。</p><h2 id="二、Amazon-Elastic-Container-Registry"><a href="#二、Amazon-Elastic-Container-Registry" class="headerlink" title="二、Amazon Elastic Container Registry"></a>二、Amazon Elastic Container Registry</h2><h3 id="1、什么是-Amazon-Elastic-Container-Registry-Amazon-ECR-？"><a href="#1、什么是-Amazon-Elastic-Container-Registry-Amazon-ECR-？" class="headerlink" title="1、什么是 Amazon Elastic Container Registry (Amazon ECR)？"></a>1、什么是 Amazon Elastic Container Registry (Amazon ECR)？</h3><p>Amazon ECR 是完全托管的容器注册表，可让开发人员轻松地共享和部署容器镜像和构件。Amazon ECR 与 Amazon Elastic Container Service (Amazon ECS)、 Amazon Elastic Kubernetes Service (Amazon EKS) 和 AWS Lambda 集成，可简化您从开发到生产的工作流。Amazon ECR 使您无需操作自己的容器注册表，或使您不必为扩展底层基础设施而感到担心。Amazon ECR 将您的映像存储在高度可用、可扩展的基础架构中，使您能够为应用程序可靠部署容器。与 AWS Identity and Access Management (IAM) 的集成提供了对每个存储库的资源级控制，让您能够跨组织或与世界上任何人共享映像。</p><h3 id="2、使用场景-1"><a href="#2、使用场景-1" class="headerlink" title="2、使用场景"></a>2、使用场景</h3><p>Amazon ECR 使您无需操作和扩展增强容器注册表功能所需的基础设施。Amazon ECR 使用 Amazon Simple Storage Service (S3) 进行存储，可确保您的容器映像高度可用且可访问，允许您可靠地为应用程序部署新的容器。Amazon ECR 通过 HTTPS 传输您的容器映像，然后自动对静态映像进行加密。您可以通过配置策略来管理每个存储库的权限并限制对 IAM 用户、角色或其他 AWS 账户的访问。Amazon ECR 与 Amazon ECS、Amazon EKS、AWS Fargate、AWS Lambda 和 Docker CLI 集成，使您能够简化开发和生产工作流。您可以使用 Docker CLI 轻松将容器映像从开发计算机推送到 Amazon ECR，并且 Amazon 容器编排工具或计算可以直接将其取回进行生产部署。</p><h2 id="三、Amazon-Elastic-Container-Service"><a href="#三、Amazon-Elastic-Container-Service" class="headerlink" title="三、Amazon Elastic Container Service"></a>三、Amazon Elastic Container Service</h2><h3 id="1、什么是-Amazon-Elastic-Container-Service？"><a href="#1、什么是-Amazon-Elastic-Container-Service？" class="headerlink" title="1、什么是 Amazon Elastic Container Service？"></a>1、什么是 Amazon Elastic Container Service？</h3><p>Amazon Elastic Container Service (ECS) 是一项高度可扩展的高性能容器管理服务，支持 Docker 容器，并让您能够在托管的 Amazon Elastic Compute Cloud (Amazon EC2) 实例集群上轻松运行应用程序。</p><h3 id="2、使用场景-2"><a href="#2、使用场景-2" class="headerlink" title="2、使用场景"></a>2、使用场景</h3><p>使用 Amazon ECS，您将不再需要安装、运维、扩展自己的集群管理基础设施，Amazon ECS 让容器的使用更简单，您可以将其作为构建块用于您的应用程序。</p><p>Amazon ECS 集成有您熟悉的功能，包括 Elastic Load Balancing、EBS 卷、Amazon Virtual Private Cloud (VPC) 和 IAM。</p><h3 id="3、Amazon-ECS-与-AWS-Elastic-Beanstalk-有什么区别？"><a href="#3、Amazon-ECS-与-AWS-Elastic-Beanstalk-有什么区别？" class="headerlink" title="3、Amazon ECS 与 AWS Elastic Beanstalk 有什么区别？"></a>3、Amazon ECS 与 AWS Elastic Beanstalk 有什么区别？</h3><p>AWS Elastic Beanstalk 是一个应用程序管理平台，可以帮助客户轻松部署和扩展 Web 应用程序和服务。它将构建块（例如 EC2、Amazon RDS、Elastic Load Balancing、AWS Auto Scaling 和 Amazon CloudWatch）的预置、应用程序的部署、运行状况监控从用户身上分离出来，让用户可以集中精力编写代码。您只需指定要部署的容器映像、CPU 和内存要求、端口映射和容器链接即可。</p><p>简易选AWS Elastic Beanstalk，自定义应用程序架构精细化的控制则选Amazon ECS 。</p><h3 id="4、Amazon-ECS-与-AWS-Lambda-有什么区别？"><a href="#4、Amazon-ECS-与-AWS-Lambda-有什么区别？" class="headerlink" title="4、Amazon ECS 与 AWS Lambda 有什么区别？"></a>4、Amazon ECS 与 AWS Lambda 有什么区别？</h3><p>Amazon Container Service 是一项高度可扩展的 Docker 容器管理服务。</p><p>AWS Lambda 是一项事件驱动型任务计算服务，在响应数据更改、网站点击或来自其他 AWS 服务的消息等“事件”时运行您的代码，无需您管理任何计算基础设施。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>考证之路</category>
+      
+      <category>AWS-SAP</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>AWS-SAP</tag>
+      
+      <tag>学习考证</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>windows和linux防火墙的配置</title>
     <link href="/2023/09/01/%E8%BF%90%E7%BB%B4%E6%95%85%E4%BA%8B/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/windows%E5%92%8Clinux%E9%98%B2%E7%81%AB%E5%A2%99/"/>
     <url>/2023/09/01/%E8%BF%90%E7%BB%B4%E6%95%85%E4%BA%8B/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/windows%E5%92%8Clinux%E9%98%B2%E7%81%AB%E5%A2%99/</url>

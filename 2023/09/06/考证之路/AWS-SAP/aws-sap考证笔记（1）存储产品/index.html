@@ -18,25 +18,25 @@
   <meta name="author" content="yeyusec">
   <meta name="keywords" content="">
   
-    <meta name="description" content="靶场简介Pikachu 是一个带有漏洞的Web应用系统，在这里包含了常见的 web 安全漏洞。 如果你是一个 Web 渗透测试学习人员且正发愁没有合适的靶场进行练习，那么 Pikachu 可能正合你意。以上是Pikachu漏洞平台的简介。 作为像我这种的安全新手，用 Pikachu 入门再好不过了，可供漏洞种类比较多，而且还免费，话不多说，直接开干。 暴力破解概述暴力破解即账号枚举, 攻击者使用自">
+    <meta name="description" content="一、Amazon EC2 Auto Scaling1、什么是 Amazon EC2 Auto Scaling？Amazon EC2 Auto Scaling 是一项完全托管的服务，可自动启动或终止 Amazon EC2 实例，以帮助确保您拥有适当数量的 Amazon EC2 实例来处理应用程序负载。Amazon EC2 Auto Scaling 通过对 EC2 实例进行队列管理，检测并替换运行状况">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pikachu靶场实战之暴力破解（1）">
-<meta property="og:url" content="https://www.yeyusec.com/2022/08/18/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8B%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%EF%BC%881%EF%BC%89/index.html">
+<meta property="og:title" content="AWS-SAP考证笔记（1）存储产品">
+<meta property="og:url" content="https://www.yeyusec.com/2023/09/06/%E8%80%83%E8%AF%81%E4%B9%8B%E8%B7%AF/AWS-SAP/aws-sap%E8%80%83%E8%AF%81%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89%E5%AD%98%E5%82%A8%E4%BA%A7%E5%93%81/index.html">
 <meta property="og:site_name" content="夜雨的安全笔记">
-<meta property="og:description" content="靶场简介Pikachu 是一个带有漏洞的Web应用系统，在这里包含了常见的 web 安全漏洞。 如果你是一个 Web 渗透测试学习人员且正发愁没有合适的靶场进行练习，那么 Pikachu 可能正合你意。以上是Pikachu漏洞平台的简介。 作为像我这种的安全新手，用 Pikachu 入门再好不过了，可供漏洞种类比较多，而且还免费，话不多说，直接开干。 暴力破解概述暴力破解即账号枚举, 攻击者使用自">
+<meta property="og:description" content="一、Amazon EC2 Auto Scaling1、什么是 Amazon EC2 Auto Scaling？Amazon EC2 Auto Scaling 是一项完全托管的服务，可自动启动或终止 Amazon EC2 实例，以帮助确保您拥有适当数量的 Amazon EC2 实例来处理应用程序负载。Amazon EC2 Auto Scaling 通过对 EC2 实例进行队列管理，检测并替换运行状况">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://image.yeyusec.com/img/202209171827605.jpeg">
-<meta property="article:published_time" content="2022-08-18T00:27:10.026Z">
-<meta property="article:modified_time" content="2023-09-02T08:53:09.934Z">
+<meta property="article:published_time" content="2023-09-06T13:29:42.588Z">
+<meta property="article:modified_time" content="2023-09-06T13:28:24.178Z">
 <meta property="article:author" content="yeyusec">
-<meta property="article:tag" content="漏洞靶场">
-<meta property="article:tag" content="暴力破解">
+<meta property="article:tag" content="AWS-SAP">
+<meta property="article:tag" content="学习考证">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://image.yeyusec.com/img/202209171827605.jpeg">
   
   
   
-  <title>pikachu靶场实战之暴力破解（1） - 夜雨的安全笔记</title>
+  <title>AWS-SAP考证笔记（1）存储产品 - 夜雨的安全笔记</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -218,7 +218,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="pikachu靶场实战之暴力破解（1）"></span>
+            <span id="subtitle" data-typed-text="AWS-SAP考证笔记（1）存储产品"></span>
           
         </div>
 
@@ -229,8 +229,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-18 08:27" pubdate>
-          2022年8月18日 早上
+        <time datetime="2023-09-06 21:29" pubdate>
+          2023年9月6日 晚上
         </time>
       </span>
     
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          1.9k 字
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          14 分钟
+          16 分钟
         
       </span>
     
@@ -298,55 +298,22 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">pikachu靶场实战之暴力破解（1）</h1>
+            <h1 style="display: none">AWS-SAP考证笔记（1）存储产品</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="靶场简介"><a href="#靶场简介" class="headerlink" title="靶场简介"></a>靶场简介</h2><p>Pikachu 是一个带有漏洞的Web应用系统，在这里包含了常见的 web 安全漏洞。 如果你是一个 Web 渗透测试学习人员且正发愁没有合适的靶场进行练习，那么 Pikachu 可能正合你意。以上是Pikachu漏洞平台的简介。</p>
-<p>作为像我这种的安全新手，用 Pikachu 入门再好不过了，可供漏洞种类比较多，而且还免费，话不多说，直接开干。</p>
-<h3 id="暴力破解概述"><a href="#暴力破解概述" class="headerlink" title="暴力破解概述"></a>暴力破解概述</h3><p>暴力破解即账号枚举, 攻击者使用自己的用户名和密码字典,对目的服务器进行一个一个尝试登陆,如果字典足够强大,最终就会猜解成功获取到用户名和密码。</p>
-<h2 id="0x01-基于表单的暴力破解"><a href="#0x01-基于表单的暴力破解" class="headerlink" title="0x01 基于表单的暴力破解"></a>0x01 基于表单的暴力破解</h2><p>第一道题比较简单，前后端都没有验证码，输入错误的账号密码会返回一个<code>username or password is not exists</code>的提示。</p>
-<p><img src="https://image.yeyusec.com/img/202208222324751.jpg" srcset="/img/loading.gif" lazyload alt="baopo001"></p>
-<p>那么，破解的思路就很清晰了，直接使用 burpsuite 的 intruder 进行账号密码暴力破解即可，字典的话，Github上这个字典库貌似很全，<a target="_blank" rel="noopener" href="https://github.com/TheKingOfDuck/fuzzDicts">https://github.com/TheKingOfDuck/fuzzDicts</a> 。</p>
-<p><img src="https://image.yeyusec.com/img/202208222342373.jpg" srcset="/img/loading.gif" lazyload alt="baopo002"></p>
-<p>抓包，将登录页面发送至 intruder ，并在 Positions 中将 username 和 password 设置为 payload，攻击方式选择 Cluster bomb。</p>
-<p><img src="https://image.yeyusec.com/img/202208222342010.jpg" srcset="/img/loading.gif" lazyload alt="baopo003"></p>
-<blockquote>
-<p>burpsuite 有四种 attack type（攻击方式），分别是</p>
-<ol>
-<li>Sinper（狙击手)：<br> 第一种攻击方式sinper主要是将bp截的包各个用$$符号标记的数据进行逐个遍历替换。</li>
-<li>Battering ram（攻城槌）<br>这种攻击方式是将包内所有标记的数据进行同时替换再发出。</li>
-<li>Pitchfork（干草叉）<br> 多参数同时爆破，但使用的是不同字典。</li>
-<li>Cluster bomb（集束炸弹）<br> 多参数做笛卡尔乘积模式爆破。多个密码本对应多个位置，交叉组合，每一个密码本里的密码都对应于另一密码本所有密码。常用于爆破账号密码。</li>
-</ol>
-</blockquote>
-<p><img src="https://image.yeyusec.com/img/202208222342731.jpg" srcset="/img/loading.gif" lazyload alt="baopo004"></p>
-<p>接着在 Payloads 模块将两个参数的字典导入，选择 Simple list 模式。</p>
-<p><img src="https://image.yeyusec.com/img/202208222342183.jpg" srcset="/img/loading.gif" lazyload alt="baopo005"></p>
-<p>由于登录失败有明显的提示，可以将 <code>username or password is not exists</code> 加入到 Grep match 中对尝试登录的结果进行筛选。</p>
-<p><img src="https://image.yeyusec.com/img/202208222342959.jpg" srcset="/img/loading.gif" lazyload alt="baopo006"></p>
-<p>因为导入的账号和密码字典都是 Top500， 根据 Cluste bomb 攻击模式的特性，尝试爆破次数高达 25 万次。我这小破电脑要跑很久了。下一关就直接用提示的账号密码了，不然要跑太久了。</p>
-<p><img src="https://image.yeyusec.com/img/202208222347300.jpeg" srcset="/img/loading.gif" lazyload alt="baopo007">最终筛选出 ’admin&#x2F;123456‘ ，’pikachu&#x2F;000000‘，’test&#x2F;abc123‘，这三组密码（ps: pikachu不在字典里，自己加的，哈哈)</p>
-<h2 id="0x02-验证码绕过-on-server"><a href="#0x02-验证码绕过-on-server" class="headerlink" title="0x02 验证码绕过(on server)"></a>0x02 验证码绕过(on server)</h2><p>这关相比第一关多了个验证码，这也是实际操作中经常遇到的。</p>
-<p><img src="https://image.yeyusec.com/img/202208222343739.jpg" srcset="/img/loading.gif" lazyload alt="baopo2-001"></p>
-<p>抓包可知再不改变验证码的情况下，用burp修改参数验证码一直有效，说明验证码没有跟随服务器更新，可以使用多次。那么接下来的操作步骤和第一关就差不多了。</p>
-<p><img src="https://image.yeyusec.com/img/202208222343670.jpg" srcset="/img/loading.gif" lazyload alt="baopo2-002"></p>
-<p>设置参数。</p>
-<p><img src="https://image.yeyusec.com/img/202208222343537.jpg" srcset="/img/loading.gif" lazyload alt="baopo2-003"></p>
-<p>直接攻击，然后就可以得到正确的账户密码了。</p>
-<h2 id="0x03-验证码绕过-on-client"><a href="#0x03-验证码绕过-on-client" class="headerlink" title="0x03 验证码绕过(on client)"></a>0x03 验证码绕过(on client)</h2><p>这关从网页源码可知验证码是前端生成，并且在前端进行校验，这就很离谱。直接抓包，改包，不经过前端就ok了，和上一关操作步骤一模一样。</p>
-<p><img src="https://image.yeyusec.com/img/202208222343776.jpg" srcset="/img/loading.gif" lazyload alt="baopo3-001"></p>
-<h2 id="0x04-token防爆破"><a href="#0x04-token防爆破" class="headerlink" title="0x04 token防爆破?"></a>0x04 token防爆破?</h2><p>这关的要点在于加入了 token，token 的作用主要是为了防止CSRF（跨站脚本攻击）。</p>
-<p><img src="https://image.yeyusec.com/img/202208222344854.jpg" srcset="/img/loading.gif" lazyload alt="baopo4-001"></p>
-<p>返回的页面中会携带下一次需要用到的token，那么直接每次请求的时候将 token 取出，带入到下一次请求中即可。</p>
-<p>这里我们的攻击模式需要选择为 Pitchfork。由于是一一对应的关系，字典还需要稍作调整。</p>
-<p><img src="https://image.yeyusec.com/img/202208222344183.jpg" srcset="/img/loading.gif" lazyload alt="baopo4-002"></p>
-<p>注意由于是上一次的结果会带入到下一次尝试中，所有只能单线程运行，新版的burp是通过设置 resource pool来实现的。</p>
-<p><img src="https://image.yeyusec.com/img/202208222344606.png" srcset="/img/loading.gif" lazyload alt="baopo4-003"></p>
-<p>另外，提取token使用的是 Grep Extract模块功能，直接选中token value值，即可直接生成提取表达式，贼方便！！！</p>
-<p><img src="https://image.yeyusec.com/img/202208222344752.jpg" srcset="/img/loading.gif" lazyload alt="baopo4-004"></p>
-<p>最终也是成功获取账号密码，暴力破解关卡完结~~~</p>
+                <h2 id="一、Amazon-EC2-Auto-Scaling"><a href="#一、Amazon-EC2-Auto-Scaling" class="headerlink" title="一、Amazon EC2 Auto Scaling"></a>一、Amazon EC2 Auto Scaling</h2><h3 id="1、什么是-Amazon-EC2-Auto-Scaling？"><a href="#1、什么是-Amazon-EC2-Auto-Scaling？" class="headerlink" title="1、什么是 Amazon EC2 Auto Scaling？"></a>1、什么是 Amazon EC2 Auto Scaling？</h3><p>Amazon EC2 Auto Scaling 是一项完全托管的服务，可自动启动或终止 Amazon EC2 实例，以帮助确保您拥有适当数量的 Amazon EC2 实例来处理应用程序负载。Amazon EC2 Auto Scaling 通过对 EC2 实例进行队列管理，检测并替换运行状况异常的实例，并根据您定义的条件自动扩展或缩减 Amazon EC2 容量，从而帮助您保持应用程序的可用性。</p>
+<h3 id="2、使用场景"><a href="#2、使用场景" class="headerlink" title="2、使用场景"></a>2、使用场景</h3><p>您应该使用 AWS Auto Scaling 来管理跨多项服务的多个资源的扩展。借助 AWS Auto Scaling，您可以使用预定义的扩展策略为多个 EC2 Auto Scaling 组或其他资源定义动态扩展策略。</p>
+<h2 id="二、Amazon-Elastic-Container-Registry"><a href="#二、Amazon-Elastic-Container-Registry" class="headerlink" title="二、Amazon Elastic Container Registry"></a>二、Amazon Elastic Container Registry</h2><h3 id="1、什么是-Amazon-Elastic-Container-Registry-Amazon-ECR-？"><a href="#1、什么是-Amazon-Elastic-Container-Registry-Amazon-ECR-？" class="headerlink" title="1、什么是 Amazon Elastic Container Registry (Amazon ECR)？"></a>1、什么是 Amazon Elastic Container Registry (Amazon ECR)？</h3><p>Amazon ECR 是完全托管的容器注册表，可让开发人员轻松地共享和部署容器镜像和构件。Amazon ECR 与 Amazon Elastic Container Service (Amazon ECS)、 Amazon Elastic Kubernetes Service (Amazon EKS) 和 AWS Lambda 集成，可简化您从开发到生产的工作流。Amazon ECR 使您无需操作自己的容器注册表，或使您不必为扩展底层基础设施而感到担心。Amazon ECR 将您的映像存储在高度可用、可扩展的基础架构中，使您能够为应用程序可靠部署容器。与 AWS Identity and Access Management (IAM) 的集成提供了对每个存储库的资源级控制，让您能够跨组织或与世界上任何人共享映像。</p>
+<h3 id="2、使用场景-1"><a href="#2、使用场景-1" class="headerlink" title="2、使用场景"></a>2、使用场景</h3><p>Amazon ECR 使您无需操作和扩展增强容器注册表功能所需的基础设施。Amazon ECR 使用 Amazon Simple Storage Service (S3) 进行存储，可确保您的容器映像高度可用且可访问，允许您可靠地为应用程序部署新的容器。Amazon ECR 通过 HTTPS 传输您的容器映像，然后自动对静态映像进行加密。您可以通过配置策略来管理每个存储库的权限并限制对 IAM 用户、角色或其他 AWS 账户的访问。Amazon ECR 与 Amazon ECS、Amazon EKS、AWS Fargate、AWS Lambda 和 Docker CLI 集成，使您能够简化开发和生产工作流。您可以使用 Docker CLI 轻松将容器映像从开发计算机推送到 Amazon ECR，并且 Amazon 容器编排工具或计算可以直接将其取回进行生产部署。</p>
+<h2 id="三、Amazon-Elastic-Container-Service"><a href="#三、Amazon-Elastic-Container-Service" class="headerlink" title="三、Amazon Elastic Container Service"></a>三、Amazon Elastic Container Service</h2><h3 id="1、什么是-Amazon-Elastic-Container-Service？"><a href="#1、什么是-Amazon-Elastic-Container-Service？" class="headerlink" title="1、什么是 Amazon Elastic Container Service？"></a>1、什么是 Amazon Elastic Container Service？</h3><p>Amazon Elastic Container Service (ECS) 是一项高度可扩展的高性能容器管理服务，支持 Docker 容器，并让您能够在托管的 Amazon Elastic Compute Cloud (Amazon EC2) 实例集群上轻松运行应用程序。</p>
+<h3 id="2、使用场景-2"><a href="#2、使用场景-2" class="headerlink" title="2、使用场景"></a>2、使用场景</h3><p>使用 Amazon ECS，您将不再需要安装、运维、扩展自己的集群管理基础设施，Amazon ECS 让容器的使用更简单，您可以将其作为构建块用于您的应用程序。</p>
+<p>Amazon ECS 集成有您熟悉的功能，包括 Elastic Load Balancing、EBS 卷、Amazon Virtual Private Cloud (VPC) 和 IAM。</p>
+<h3 id="3、Amazon-ECS-与-AWS-Elastic-Beanstalk-有什么区别？"><a href="#3、Amazon-ECS-与-AWS-Elastic-Beanstalk-有什么区别？" class="headerlink" title="3、Amazon ECS 与 AWS Elastic Beanstalk 有什么区别？"></a>3、Amazon ECS 与 AWS Elastic Beanstalk 有什么区别？</h3><p>AWS Elastic Beanstalk 是一个应用程序管理平台，可以帮助客户轻松部署和扩展 Web 应用程序和服务。它将构建块（例如 EC2、Amazon RDS、Elastic Load Balancing、AWS Auto Scaling 和 Amazon CloudWatch）的预置、应用程序的部署、运行状况监控从用户身上分离出来，让用户可以集中精力编写代码。您只需指定要部署的容器映像、CPU 和内存要求、端口映射和容器链接即可。</p>
+<p>简易选AWS Elastic Beanstalk，自定义应用程序架构精细化的控制则选Amazon ECS 。</p>
+<h3 id="4、Amazon-ECS-与-AWS-Lambda-有什么区别？"><a href="#4、Amazon-ECS-与-AWS-Lambda-有什么区别？" class="headerlink" title="4、Amazon ECS 与 AWS Lambda 有什么区别？"></a>4、Amazon ECS 与 AWS Lambda 有什么区别？</h3><p>Amazon Container Service 是一项高度可扩展的 Docker 容器管理服务。</p>
+<p>AWS Lambda 是一项事件驱动型任务计算服务，在响应数据更改、网站点击或来自其他 AWS 服务的消息等“事件”时运行您的代码，无需您管理任何计算基础设施。</p>
 
                 
               </div>
@@ -365,12 +332,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/" class="category-chain-item">安全笔记</a>
+  <a href="/categories/%E8%80%83%E8%AF%81%E4%B9%8B%E8%B7%AF/" class="category-chain-item">考证之路</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/" class="category-chain-item">靶场学习</a>
+  <a href="/categories/%E8%80%83%E8%AF%81%E4%B9%8B%E8%B7%AF/AWS-SAP/" class="category-chain-item">AWS-SAP</a>
   
   
 
@@ -387,9 +354,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA/">#漏洞靶场</a>
+        <a href="/tags/AWS-SAP/">#AWS-SAP</a>
       
-        <a href="/tags/%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/">#暴力破解</a>
+        <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%80%83%E8%AF%81/">#学习考证</a>
       
     </div>
   
@@ -401,8 +368,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>pikachu靶场实战之暴力破解（1）</div>
-      <div>https://www.yeyusec.com/2022/08/18/安全笔记/靶场学习/pikachu靶场实战之暴力破解（1）/</div>
+      <div>AWS-SAP考证笔记（1）存储产品</div>
+      <div>https://www.yeyusec.com/2023/09/06/考证之路/AWS-SAP/aws-sap考证笔记（1）存储产品/</div>
     </div>
     <div class="license-meta">
       
@@ -414,7 +381,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年8月18日</div>
+          <div>2023年9月6日</div>
         </div>
       
       
@@ -446,18 +413,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/08/25/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8BXSS%E6%BC%8F%E6%B4%9E%EF%BC%882%EF%BC%89/" title="pikachu靶场实战之XSS漏洞（2）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">pikachu靶场实战之XSS漏洞（2）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/04/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/uoload-labs%E9%9D%B6%E5%9C%BA%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E9%80%9A%E5%85%B3%E4%B9%8B%E8%B7%AF%EF%BC%881%EF%BC%89/" title="uoload-labs靶场文件上传漏洞通关之路（1）">
-                        <span class="hidden-mobile">uoload-labs靶场文件上传漏洞通关之路（1）</span>
+                      <a href="/2023/09/01/%E8%BF%90%E7%BB%B4%E6%95%85%E4%BA%8B/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/windows%E5%92%8Clinux%E9%98%B2%E7%81%AB%E5%A2%99/" title="windows和linux防火墙的配置">
+                        <span class="hidden-mobile">windows和linux防火墙的配置</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
