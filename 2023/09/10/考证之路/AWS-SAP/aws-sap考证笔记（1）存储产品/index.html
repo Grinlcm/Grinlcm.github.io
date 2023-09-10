@@ -1,0 +1,798 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="yeyusec">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、Amazon EC2 Auto Scaling1、什么是 Amazon EC2 Auto Scaling？Amazon EC2 Auto Scaling 是一项完全托管的服务，可自动启动或终止 Amazon EC2 实例，以帮助确保您拥有适当数量的 Amazon EC2 实例来处理应用程序负载。Amazon EC2 Auto Scaling 通过对 EC2 实例进行队列管理，检测并替换运行状况">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AWS-SAP考证笔记（1）计算产品">
+<meta property="og:url" content="https://www.yeyusec.com/2023/09/10/%E8%80%83%E8%AF%81%E4%B9%8B%E8%B7%AF/AWS-SAP/aws-sap%E8%80%83%E8%AF%81%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89%E5%AD%98%E5%82%A8%E4%BA%A7%E5%93%81/index.html">
+<meta property="og:site_name" content="夜雨的安全笔记">
+<meta property="og:description" content="一、Amazon EC2 Auto Scaling1、什么是 Amazon EC2 Auto Scaling？Amazon EC2 Auto Scaling 是一项完全托管的服务，可自动启动或终止 Amazon EC2 实例，以帮助确保您拥有适当数量的 Amazon EC2 实例来处理应用程序负载。Amazon EC2 Auto Scaling 通过对 EC2 实例进行队列管理，检测并替换运行状况">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://image.yeyusec.com/img/202309062136289.png">
+<meta property="article:published_time" content="2023-09-10T12:51:39.516Z">
+<meta property="article:modified_time" content="2023-09-10T12:50:42.071Z">
+<meta property="article:author" content="yeyusec">
+<meta property="article:tag" content="AWS-SAP">
+<meta property="article:tag" content="学习考证">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://image.yeyusec.com/img/202309062136289.png">
+  
+  
+  
+  <title>AWS-SAP考证笔记（1）计算产品 - 夜雨的安全笔记</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.yeyusec.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"eMQ0QW9NDWRc9H9YSH9guNP6-gzGzoHsz","app_key":"y3cQ01vcTKTEMOkMOxTx8mJ1","server_url":"https://emq0qw9n.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>夜雨的安全笔记</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="AWS-SAP考证笔记（1）计算产品"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-09-10 20:51" pubdate>
+          2023年9月10日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          75 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">AWS-SAP考证笔记（1）计算产品</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="一、Amazon-EC2-Auto-Scaling"><a href="#一、Amazon-EC2-Auto-Scaling" class="headerlink" title="一、Amazon EC2 Auto Scaling"></a>一、Amazon EC2 Auto Scaling</h2><h3 id="1、什么是-Amazon-EC2-Auto-Scaling？"><a href="#1、什么是-Amazon-EC2-Auto-Scaling？" class="headerlink" title="1、什么是 Amazon EC2 Auto Scaling？"></a>1、什么是 Amazon EC2 Auto Scaling？</h3><p>Amazon EC2 Auto Scaling 是一项完全托管的服务，可自动启动或终止 Amazon EC2 实例，以帮助确保您拥有适当数量的 Amazon EC2 实例来处理应用程序负载。Amazon EC2 Auto Scaling 通过对 EC2 实例进行队列管理，检测并替换运行状况异常的实例，并根据您定义的条件自动扩展或缩减 Amazon EC2 容量，从而帮助您保持应用程序的可用性。</p>
+<h3 id="2、使用场景"><a href="#2、使用场景" class="headerlink" title="2、使用场景"></a>2、使用场景</h3><p>您应该使用 AWS Auto Scaling 来管理跨多项服务的多个资源的扩展。借助 AWS Auto Scaling，您可以使用预定义的扩展策略为多个 EC2 Auto Scaling 组或其他资源定义动态扩展策略。</p>
+<h2 id="二、Amazon-Elastic-Container-Registry"><a href="#二、Amazon-Elastic-Container-Registry" class="headerlink" title="二、Amazon Elastic Container Registry"></a>二、Amazon Elastic Container Registry</h2><h3 id="1、什么是-Amazon-Elastic-Container-Registry-Amazon-ECR-？"><a href="#1、什么是-Amazon-Elastic-Container-Registry-Amazon-ECR-？" class="headerlink" title="1、什么是 Amazon Elastic Container Registry (Amazon ECR)？"></a>1、什么是 Amazon Elastic Container Registry (Amazon ECR)？</h3><p>Amazon ECR 是完全托管的容器注册表，可让开发人员轻松地共享和部署容器镜像和构件。Amazon ECR 与 Amazon Elastic Container Service (Amazon ECS)、 Amazon Elastic Kubernetes Service (Amazon EKS) 和 AWS Lambda 集成，可简化您从开发到生产的工作流。Amazon ECR 使您无需操作自己的容器注册表，或使您不必为扩展底层基础设施而感到担心。Amazon ECR 将您的映像存储在高度可用、可扩展的基础架构中，使您能够为应用程序可靠部署容器。与 AWS Identity and Access Management (IAM) 的集成提供了对每个存储库的资源级控制，让您能够跨组织或与世界上任何人共享映像。</p>
+<h3 id="2、使用场景-1"><a href="#2、使用场景-1" class="headerlink" title="2、使用场景"></a>2、使用场景</h3><p>Amazon ECR 使您无需操作和扩展增强容器注册表功能所需的基础设施。Amazon ECR 使用 Amazon Simple Storage Service (S3) 进行存储，可确保您的容器映像高度可用且可访问，允许您可靠地为应用程序部署新的容器。Amazon ECR 通过 HTTPS 传输您的容器映像，然后自动对静态映像进行加密。您可以通过配置策略来管理每个存储库的权限并限制对 IAM 用户、角色或其他 AWS 账户的访问。Amazon ECR 与 Amazon ECS、Amazon EKS、AWS Fargate、AWS Lambda 和 Docker CLI 集成，使您能够简化开发和生产工作流。您可以使用 Docker CLI 轻松将容器映像从开发计算机推送到 Amazon ECR，并且 Amazon 容器编排工具或计算可以直接将其取回进行生产部署。</p>
+<h2 id="三、Amazon-Elastic-Container-Service"><a href="#三、Amazon-Elastic-Container-Service" class="headerlink" title="三、Amazon Elastic Container Service"></a>三、Amazon Elastic Container Service</h2><h3 id="1、什么是-Amazon-Elastic-Container-Service？"><a href="#1、什么是-Amazon-Elastic-Container-Service？" class="headerlink" title="1、什么是 Amazon Elastic Container Service？"></a>1、什么是 Amazon Elastic Container Service？</h3><p>Amazon Elastic Container Service (ECS) 是一项高度可扩展的高性能容器管理服务，支持 Docker 容器，并让您能够在托管的 Amazon Elastic Compute Cloud (Amazon EC2) 实例集群上轻松运行应用程序。</p>
+<h3 id="2、使用场景-2"><a href="#2、使用场景-2" class="headerlink" title="2、使用场景"></a>2、使用场景</h3><p>使用 Amazon ECS，您将不再需要安装、运维、扩展自己的集群管理基础设施，Amazon ECS 让容器的使用更简单，您可以将其作为构建块用于您的应用程序。</p>
+<p>Amazon ECS 集成有您熟悉的功能，包括 Elastic Load Balancing、EBS 卷、Amazon Virtual Private Cloud (VPC) 和 IAM。</p>
+<h3 id="3、Amazon-ECS-与-AWS-Elastic-Beanstalk-有什么区别？"><a href="#3、Amazon-ECS-与-AWS-Elastic-Beanstalk-有什么区别？" class="headerlink" title="3、Amazon ECS 与 AWS Elastic Beanstalk 有什么区别？"></a>3、Amazon ECS 与 AWS Elastic Beanstalk 有什么区别？</h3><p>AWS Elastic Beanstalk 是一个应用程序管理平台，可以帮助客户轻松部署和扩展 Web 应用程序和服务。它将构建块（例如 EC2、Amazon RDS、Elastic Load Balancing、AWS Auto Scaling 和 Amazon CloudWatch）的预置、应用程序的部署、运行状况监控从用户身上分离出来，让用户可以集中精力编写代码。您只需指定要部署的容器映像、CPU 和内存要求、端口映射和容器链接即可。</p>
+<p>简易选AWS Elastic Beanstalk，自定义应用程序架构精细化的控制则选Amazon ECS 。</p>
+<h3 id="4、Amazon-ECS-与-AWS-Lambda-有什么区别？"><a href="#4、Amazon-ECS-与-AWS-Lambda-有什么区别？" class="headerlink" title="4、Amazon ECS 与 AWS Lambda 有什么区别？"></a>4、Amazon ECS 与 AWS Lambda 有什么区别？</h3><p>Amazon Container Service 是一项高度可扩展的 Docker 容器管理服务。</p>
+<p>AWS Lambda 是一项事件驱动型任务计算服务，在响应数据更改、网站点击或来自其他 AWS 服务的消息等“事件”时运行您的代码，无需您管理任何计算基础设施。</p>
+<h2 id="四、Amazon-Elastic-Compute-Cloud（Amazon-EC2）"><a href="#四、Amazon-Elastic-Compute-Cloud（Amazon-EC2）" class="headerlink" title="四、Amazon Elastic Compute Cloud（Amazon EC2）"></a>四、Amazon Elastic Compute Cloud（Amazon EC2）</h2><h3 id="1、什么是-Amazon-Elastic-Compute-Cloud（Amazon-EC2）？"><a href="#1、什么是-Amazon-Elastic-Compute-Cloud（Amazon-EC2）？" class="headerlink" title="1、什么是 Amazon Elastic Compute Cloud（Amazon EC2）？"></a>1、什么是 Amazon Elastic Compute Cloud（Amazon EC2）？</h3><p>Amazon EC2 是一种 Web 服务，可以在云中提供可调整大小的计算容量。该服务旨在让开发人员能更轻松地进行 Web 级的计算。</p>
+<h3 id="2、Amazon-EC2-可以用来做什么？"><a href="#2、Amazon-EC2-可以用来做什么？" class="headerlink" title="2、Amazon EC2 可以用来做什么？"></a>2、Amazon EC2 可以用来做什么？</h3><p>正如 Amazon Simple Storage Service（Amazon S3）实现云中的存储一样，Amazon EC2 可以实现云中的“计算”。  Amazon EC2 云服务器的 Web 云服务接口非常简单，您可以最小的阻力轻松获取容量，随之配置容量。使用该服务，您将能完全控制您的计算资源，并可在成熟的 Amazon 计算环境中运行。Amazon EC2 将获取并启动新服务器实例所需要的时间缩短至几分钟，这样一来，在您的计算要求发生变化时，您便可以快速扩展或缩减计算容量。Amazon EC2 按您实际使用的容量收费，改变了计算的成本结算方式。</p>
+<h2 id="五、Amazon-EKS"><a href="#五、Amazon-EKS" class="headerlink" title="五、Amazon EKS"></a>五、Amazon EKS</h2><h3 id="1、什么是-Amazon-Elastic-Kubernetes-Service-Amazon-EKS-？"><a href="#1、什么是-Amazon-Elastic-Kubernetes-Service-Amazon-EKS-？" class="headerlink" title="1、什么是 Amazon Elastic Kubernetes Service (Amazon EKS)？"></a>1、什么是 Amazon Elastic Kubernetes Service (Amazon EKS)？</h3><p>Amazon EKS 是一项托管服务，借助该服务，您可以轻松在 AWS 上运行 Kubernetes，而无需安装和操作您自己的 Kubernetes 控制面板或工作线程节点。</p>
+<h3 id="2、什么是-Kubernetes？"><a href="#2、什么是-Kubernetes？" class="headerlink" title="2、什么是 Kubernetes？"></a>2、什么是 Kubernetes？</h3><p>Kubernetes 是一款开源容器编排系统，您可以利用它大规模地部署和管理容器化应用程序。Kubernetes 会将容器安排到各个逻辑分组以便进行管理和查找，然后在 Amazon Elastic Compute Cloud (Amazon EC2) 实例集群上启动它们。使用 Kubernetes，您可以使用同一工具集在本地和云中运行容器化应用程序，包括微服务、批处理工作线程和平台即服务 (PaaS)。</p>
+<h3 id="3、使用场景"><a href="#3、使用场景" class="headerlink" title="3、使用场景"></a>3、使用场景</h3><p>Amazon EKS 可跨多个 AWS 可用区 (AZ) 预置和扩展 Kubernetes 控制面板（包括应用程序编程接口 (API) 服务器和后端持久层），从而获得高可用性和容错能力。Amazon EKS 可自动检测和替换运行状况不佳的控制面板节点并修补控制面板。您可以使用 AWS Fargate 运行 EKS，前者提供适用于容器的无服务器计算。使用 Fargate，您无需预置和管理服务器，而且可以为每个应用程序指定资源并为其付费，并通过设计隔离应用程序来提高安全性。</p>
+<p>Amazon EKS 可与许多 AWS 服务集成，为应用程序提供可扩展性和安全性。这些产品包括用于分配负载的 Elastic Load Balancing、用于身份验证的 AWS Identity and Access Management (IAM)、用于隔离的 Amazon Virtual Private Cloud (VPC) 和用于日志记录的 AWS CloudTrail。</p>
+<h3 id="4、工作原理"><a href="#4、工作原理" class="headerlink" title="4、工作原理"></a>4、工作原理</h3><p>Amazon EKS 可为您预置（启动）和管理 Kubernetes 控制面板和工作线程节点。总体来说，Kubernetes 由两大组件构成：运行容器的工作线程节点群集和管理容器在集群上的启动时间和位置并监控容器状态的控制面板。</p>
+<p>如果不使用 Amazon EKS，您需要自行运行 Kubernetes 控制面板和工作线程节点群集。使用 Amazon EKS，您可以在 EKS 控制台、命令行界面 (CLI) 或 API 中通过单个命令预置您的工作线程节点。AWS 在高度可用且安全的配置中处理 Kubernetes 控制面板的预置、扩展和管理。这消除了操作重担，让您能够专注于应用程序构建而非 AWS 基础设施管理。</p>
+<h2 id="六、Amazon-Lightsail"><a href="#六、Amazon-Lightsail" class="headerlink" title="六、Amazon Lightsail"></a>六、Amazon Lightsail</h2><h3 id="1、什么是-Amazon-Lightsail？"><a href="#1、什么是-Amazon-Lightsail？" class="headerlink" title="1、什么是 Amazon Lightsail？"></a>1、什么是 Amazon Lightsail？</h3><p>Amazon Lightsail 提供虚拟专用服务器 (VPS) ，它是开发人员、小型企业、学生以及其他需要在云上构建和托管其应用程序的解决方案的用户开始使用 AWS 产品&#x2F;服务的最简单方式。Lightsail 为开发人员提供计算、存储以及网络容量和功能，让其能够在云中部署并管理网站和 Web 应用程序。Lightsail 可提供快速启动项目所需的一切要素，包括虚拟机、容器、数据库、CDN、负载均衡器、DNS 管理等，目前月度价格低廉。</p>
+<h3 id="2、什么是虚拟专用服务器？"><a href="#2、什么是虚拟专用服务器？" class="headerlink" title="2、什么是虚拟专用服务器？"></a>2、什么是虚拟专用服务器？</h3><p>虚拟专用服务器也称为“实例”，允许用户在高度安全和可用的环境中运行网站和 Web 应用程序，同时保持成本效益。</p>
+<h3 id="3、使用场景-1"><a href="#3、使用场景-1" class="headerlink" title="3、使用场景"></a>3、使用场景</h3><p>您可以在几个预配置的 VPS 计划中进行选择，其中包括轻松部署和管理应用程序的所需的一切内容。Lightsail 最适合那些需要几个虚拟专用服务器的项目和喜欢简单管理界面的用户。Lightsail 的常见使用案例包括运行网站、Web 应用程序、博客、电子商务网站、简单软件等。</p>
+<h2 id="七、AWS-Batch"><a href="#七、AWS-Batch" class="headerlink" title="七、AWS Batch"></a>七、AWS Batch</h2><h3 id="1、什么是-AWS-Batch？"><a href="#1、什么是-AWS-Batch？" class="headerlink" title="1、什么是 AWS Batch？"></a>1、什么是 AWS Batch？</h3><p>AWS Batch 是一系列批处理管理功能，能够让开发人员、科学家和工程师轻松高效地在 AWS 上运行成千上万个批处理计算作业。AWS Batch 可根据提交的批处理作业的卷和特定资源需求动态预置最佳的计算资源（如 CPU 或内存优化计算资源）数量和类型。借助 AWS Batch，您无需安装和管理批处理计算软件或服务器集群，从而使您能够集中精力分析结果和解决问题。AWS Batch 使用 Amazon ECS、Amazon EKS 和 AWS Fargate 计划、安排和执行您的批处理计算工作负载，并可选择使用竞价型实例。</p>
+<h3 id="2、使用场景-3"><a href="#2、使用场景-3" class="headerlink" title="2、使用场景"></a>2、使用场景</h3><p>如果您希望 AWS Batch 处理来自 ECS 基础设施的完全抽象化的计算预置时，则应在 Fargate 上运行作业。如果您需要访问特定的实例配置（特定的处理器、GPU 或架构）或非常大的工作负载，则应在 ECS 上运行作业。如果您选择 Kubernetes 作为您的容器编排技术，则可以使用与 EKS 的批处理集成来标准化您的批处理工作负载。</p>
+<p>根据您的用例，目前，Fargate 作业在初始扩展工作时能够更快启动，因为无需等待 EC2 实例或容器组启动。但是，对于较大的工作负载，EKS 或 ECS 实例可能更快，因为 Batch 会重用实例和容器镜像来运行后续作业。</p>
+<h2 id="八、AWS-Data-Exchange"><a href="#八、AWS-Data-Exchange" class="headerlink" title="八、AWS Data Exchange"></a>八、AWS Data Exchange</h2><h3 id="1、什么是AWS-Data-Exchange"><a href="#1、什么是AWS-Data-Exchange" class="headerlink" title="1、什么是AWS Data Exchange"></a>1、什么是AWS Data Exchange</h3><p>AWS Data Exchange 使 AWS 客户可以轻松安全地在 AWS 上交换和使用第三方数据。</p>
+<p>AWS Data Exchange 拥有单一的全球产品目录，由任何受支持的 AWS 区域的提供商提供。无论您使用哪个区域，您都可以看到相同的目录。产品的基础资源（数据集、修订版、资产）是您以编程方式或通过特定 AWS 区域中的 AWS Data Exchange 控制台进行管理的区域资源。</p>
+<h2 id="九、AWS-Elastic-Beanstalk"><a href="#九、AWS-Elastic-Beanstalk" class="headerlink" title="九、AWS Elastic Beanstalk"></a>九、AWS Elastic Beanstalk</h2><h3 id="1、什么是-AWS-Elastic-Beanstalk？"><a href="#1、什么是-AWS-Elastic-Beanstalk？" class="headerlink" title="1、什么是 AWS Elastic Beanstalk？"></a>1、什么是 AWS Elastic Beanstalk？</h3><p>AWS Elastic Beanstalk 让开发人员能够更加轻松地在 AWS 云中快速部署和管理应用程序。开发人员只需上传应用程序，Elastic Beanstalk 将自动处理容量预配置、负载均衡、Auto Scaling 和应用程序运行状况监控的部署细节。</p>
+<h3 id="2、使用场景-4"><a href="#2、使用场景-4" class="headerlink" title="2、使用场景"></a>2、使用场景</h3><p>希望在 AWS 云中快速部署和管理应用程序的用户。无需熟悉云计算即可使用该服务。AWS Elastic Beanstalk 支持 Java、.NET、PHP、Node.js、Python、Ruby、Go 和 Docker Web 应用程序。</p>
+<h2 id="十、AWS-Fargate"><a href="#十、AWS-Fargate" class="headerlink" title="十、AWS Fargate"></a>十、AWS Fargate</h2><h3 id="1、什么是-AWS-Fargate？"><a href="#1、什么是-AWS-Fargate？" class="headerlink" title="1、什么是 AWS Fargate？"></a>1、什么是 AWS Fargate？</h3><p>AWS Fargate 是一种适用于容器的无服务器计算引擎，可与 Amazon Elastic Container Service (ECS) 和 Amazon Elastic Kubernetes Service (EKS) 一起使用。通过 AWS Fargate 可以轻松专注于构建应用程序。使用 Fargate，您无需预置和管理服务器，而且可以为每个应用程序指定资源并为其付费，并通过设计隔离应用程序来提高安全性。</p>
+<h3 id="2、使用场景-5"><a href="#2、使用场景-5" class="headerlink" title="2、使用场景"></a>2、使用场景</h3><p>借助 AWS Fargate，您能够专注于应用程序。您可规定应用程序的内容、联网、存储和扩展要求，无需实施预置、修补、集群容量管理或基础设施管理。</p>
+<p>Amazon Elastic Container Service (ECS) 是一项高度可扩展的高性能容器管理服务，支持 Docker 容器，而 Amazon Elastic Kubernetes Service (EKS) 是一项完全托管的 Kubernetes 服务。ECS 和 EKS 均使用 Fargate 预置的容器以自动方式进行扩展、负载均衡并通过托管计划优化容器可用性，从而提供一种更简单的方式来构建和运行容器化应用程序。</p>
+<p>选择 AWS Fargate 用于其隔离模型和安全性用途。如果您想启动容器而不预置或管理 EC2 实例，也应选择 Fargate。如果您需要加强对 EC2 实例的控制或支持更广泛的定制选项，那么请使用 ECS 或 EKS，不要使用 Fargate。将 EC2 用于 GPU 工作负载，目前 Fargate 对此不提供支持。</p>
+<h2 id="十一、AWS-Lambda"><a href="#十一、AWS-Lambda" class="headerlink" title="十一、AWS Lambda"></a>十一、AWS Lambda</h2><h3 id="1、什么是-AWS-Lambda？"><a href="#1、什么是-AWS-Lambda？" class="headerlink" title="1、什么是 AWS Lambda？"></a>1、什么是 AWS Lambda？</h3><p>通过 AWS Lambda，无需预置或管理服务器即可运行代码。您只需按使用的计算时间付费 – 代码未运行时不产生费用。借助 Lambda，您几乎可以为任何类型的应用程序或后端服务运行代码，而且完全无需管理。只需上传您的代码，Lambda 会处理运行和扩展高可用性代码所需的一切工作。您可以将您的代码设置为自动从其他 AWS 服务触发，或者直接从任何 Web 或移动应用程序调用。</p>
+<p>您在 AWS Lambda 上运行的代码以“Lambda 函数”上传。每个函数都有相关的配置信息，如其名称、描述、入口点和资源要求。代码必须以“无状态”样式编写，即应假设与底层计算基础设施无密切关系。本地文件系统访问、子过程和类似的项目可能不会超出请求的使用寿命，且任何持续状态都应存储在 Amazon S3、Amazon DynamoDB、Amazon EFS 或另一个可用 Internet 的存储服务中。Lambda 函数可包含库，甚至是本机库。</p>
+<h3 id="2、什么是无服务器计算？"><a href="#2、什么是无服务器计算？" class="headerlink" title="2、什么是无服务器计算？"></a>2、什么是无服务器计算？</h3><p>无服务器计算让您可以在不考虑服务器的情况下构建并运行应用程序和服务。使用无服务器计算，您的应用程序仍在服务器上运行，但所有服务器管理工作均由 AWS 负责。无服务器计算的核心是 AWS Lambda，这项服务可使您无需预置或管理服务器即可运行代码。</p>
+<h3 id="3、什么时候应该使用-AWS-Lambda？什么时候应该使用-Amazon-EC2？"><a href="#3、什么时候应该使用-AWS-Lambda？什么时候应该使用-Amazon-EC2？" class="headerlink" title="3、什么时候应该使用 AWS Lambda？什么时候应该使用 Amazon EC2？"></a>3、什么时候应该使用 AWS Lambda？什么时候应该使用 Amazon EC2？</h3><p>Amazon Web Services 提供一组计算服务以满足各种需求。</p>
+<p>Amazon EC2 具有范围广泛的实例类型以及自定义操作系统、网络和安全设置以及整个软件堆栈的选项，可提供灵活性，从而让您能够将现有的应用程序轻松迁移到云中。使用 Amazon EC2，您将负责预置容量、监控服务器队列的运行状况和性能，并设计容错性和可扩展性。AWS Elastic Beanstalk 提供易用的服务，供您部署和扩展 Web 应用程序，您可以在其中保留对底层 EC2 实例的所有权和完整控制权。Amazon EC2 Container Service 是一项可扩展的管理服务，支持 Docker 容器，允许您轻松地在 Amazon EC2 实例的托管集群上运行分布式应用程序。</p>
+<p>AWS Lambda 可用于依照对事件的响应轻松执行代码，如 Amazon S3 存储桶的更改、Amazon DynamoDB 表的更新或您的应用程序或设备生成的自定义事件。利用 Lambda，您不必预置您自己的实例；Lambda 会代您执行所有的运行和管理活动，包括容量预置、监控服务器队列运行状况、向底层计算资源应用安全补丁、部署您的代码、在前端运行 Web 服务以及监控和记录您的代码。AWS Lambda 为您的代码提供轻松的扩展和高可用性，从而无需您做额外努力。</p>
+<h3 id="4、AWS-Lambda-函数的执行需要多长时间？"><a href="#4、AWS-Lambda-函数的执行需要多长时间？" class="headerlink" title="4、AWS Lambda 函数的执行需要多长时间？"></a>4、AWS Lambda 函数的执行需要多长时间？</h3><p>AWS Lambda 函数可以配置为每次执行最长运行 15 分钟。您可以将超时设置为 1 秒到 15 分钟之间的任何值。</p>
+<h3 id="5、AWS-Lambda-是否支持版本控制？"><a href="#5、AWS-Lambda-是否支持版本控制？" class="headerlink" title="5、AWS Lambda 是否支持版本控制？"></a>5、AWS Lambda 是否支持版本控制？</h3><p>是。默认情况下，每个 AWS Lambda 函数拥有一个当前版本的代码。Lambda 函数客户端可调用特定的版本或获取最新的实施。</p>
+<h3 id="6、上传代码后，AWS-Lambda-函数需要准备多久进行调用？"><a href="#6、上传代码后，AWS-Lambda-函数需要准备多久进行调用？" class="headerlink" title="6、上传代码后，AWS Lambda 函数需要准备多久进行调用？"></a>6、上传代码后，AWS Lambda 函数需要准备多久进行调用？</h3><p>部署时间根据代码大小的不同而不同，但 AWS Lambda 函数一般在上传后几秒钟内就能做好调用准备。</p>
+<h3 id="7、为了满足我的分析需求，我应该如何在-AWS-Lambda-和-Amazon-Kinesis-Data-Analytics-之间进行选择？"><a href="#7、为了满足我的分析需求，我应该如何在-AWS-Lambda-和-Amazon-Kinesis-Data-Analytics-之间进行选择？" class="headerlink" title="7、为了满足我的分析需求，我应该如何在 AWS Lambda 和 Amazon Kinesis Data Analytics 之间进行选择？"></a>7、为了满足我的分析需求，我应该如何在 AWS Lambda 和 Amazon Kinesis Data Analytics 之间进行选择？</h3><p>AWS Lambda 允许您在短时间内（最多不超过 15 分钟），在单个逻辑分区（如一个分片）上对 Amazon Kinesis 或 Amazon DynamoDB Streams 中的数据执行基于时间的聚合（如计数、最大值、总和、平均值等）。这使您可以选择为基于事件的应用程序轻松设置简单的分析，而不会增加架构的复杂性，因为您的业务和分析逻辑可以位于同一个函数中。Lambda 允许根据事件时间戳，在最多 15 分钟的滚动窗口内进行聚合。Amazon Kinesis Data Analytics 允许您构建更复杂的分析应用程序，以支持灵活的处理选择和强大的容错能力，只需进行一次精确的处理，而不会重复，并且可以跨多个逻辑分区对整个数据流执行分析。借助 KDA，您可以使用事件时间或处理时间分析多种类型的聚合窗口（滚动窗口、交错窗口、滑动窗口、会话窗口）中的数据。</p>
+<h3 id="8、如何使用-AWS-Lambda-函数响应-Amazon-CloudWatch-警报？"><a href="#8、如何使用-AWS-Lambda-函数响应-Amazon-CloudWatch-警报？" class="headerlink" title="8、如何使用 AWS Lambda 函数响应 Amazon CloudWatch 警报？"></a>8、如何使用 AWS Lambda 函数响应 Amazon CloudWatch 警报？</h3><p>首先应配置警报，使其发送 Amazon SNS 通知。然后从 AWS Lambda 控制台中选择一个 Lambda 函数并将其与 Amazon SNS 主题进行关联。请参阅 Amazon CloudWatch 开发人员指南，了解有关设置 Amazon CloudWatch 警报的更多信息。</p>
+<h3 id="9、如何使用-AWS-Lambda-函数响应由-Amazon-Cognito-管理的用户或设备数据的变更？"><a href="#9、如何使用-AWS-Lambda-函数响应由-Amazon-Cognito-管理的用户或设备数据的变更？" class="headerlink" title="9、如何使用 AWS Lambda 函数响应由 Amazon Cognito 管理的用户或设备数据的变更？"></a>9、如何使用 AWS Lambda 函数响应由 Amazon Cognito 管理的用户或设备数据的变更？</h3><p>您可以从 AWS Lambda 控制台中选择一个函数，当与 Amazon Cognito 身份池关联的任何数据集进行同步时，触发这个函数。还可通过 AWS 软件开发工具包和 CLI 实现这一功能。请访问 Amazon Cognito，了解有关使用 Amazon Cognito 在用户设备间共享和同步数据的更多信息。</p>
+<h3 id="10、如何通过-HTTPS-调用-AWS-Lambda-函数？"><a href="#10、如何通过-HTTPS-调用-AWS-Lambda-函数？" class="headerlink" title="10、如何通过 HTTPS 调用 AWS Lambda 函数？"></a>10、如何通过 HTTPS 调用 AWS Lambda 函数？</h3><p>通过使用 Amazon API Gateway 定义自定义的 RESTful API，您可以通过 HTTPS 调用 Lambda 函数。这为您的函数提供了终端节点，这些函数可以响应 GET、PUT 和 POST 等 REST 调用。</p>
+<h2 id="十二、AWS-Outposts"><a href="#十二、AWS-Outposts" class="headerlink" title="十二、AWS Outposts"></a>十二、AWS Outposts</h2><h3 id="1、什么是AWS-Outposts？"><a href="#1、什么是AWS-Outposts？" class="headerlink" title="1、什么是AWS Outposts？"></a>1、什么是AWS Outposts？</h3><p>您可以使用 Outposts 机架来支持您具有低延迟或本地数据处理要求的应用程序。这些应用程序可能需要为终端用户应用程序生成近乎实时的响应，或者需要与其他本地系统通信或控制现场设备。它们可能包括在工厂车间中运行的工作负载，用于自动化生产操作、实时患者诊断或医学成像以及内容和流媒体处理。 您可以使用 Outposts 机架安全地存储和处理需要在本地或没有 AWS 区域的国家&#x2F;地区保留的客户数据。您可以在 Outposts 机架上运行数据密集型工作负载，并且如果将数据传输到 AWS 区域中既昂贵又浪费，而且想要更好的控制数据分析、备份和还原，则在本地处理数据。</p>
+<h2 id="十三、AWS-Serverless-Application-Repository"><a href="#十三、AWS-Serverless-Application-Repository" class="headerlink" title="十三、AWS Serverless Application Repository"></a>十三、AWS Serverless Application Repository</h2><h3 id="1、什么是无服务器应用程序？"><a href="#1、什么是无服务器应用程序？" class="headerlink" title="1、什么是无服务器应用程序？"></a>1、什么是无服务器应用程序？</h3><p>无服务器应用程序无需预置、部署或管理服务器或其他基础设施。它们具有内置高可用性，并且可以连续自动扩展。您可以使用一种完全托管的 AWS 产品来构建和运行无服务器应用程序，包括用于计算的 AWS Lambda、用于 API 的 Amazon API Gateway 和用于数据库的 Amazon DynamoDB。</p>
+<h3 id="2、什么是-AWS-Serverless-Application-Repository？"><a href="#2、什么是-AWS-Serverless-Application-Repository？" class="headerlink" title="2、什么是 AWS Serverless Application Repository？"></a>2、什么是 AWS Serverless Application Repository？</h3><p>AWS Serverless Application Repository 将 AWS 和其他 AWS 合作伙伴及开发人员发布的越来越多的无服务器应用程序集合在一起。借助 Serverless Application Repository，您可以轻松地为 Web 和移动后端、流式处理以及机器学习等常见使用案例部署应用程序，以便快速开始使用 AWS 无服务器平台。</p>
+<h2 id="十四、VMware-Cloud-on-AWS"><a href="#十四、VMware-Cloud-on-AWS" class="headerlink" title="十四、VMware Cloud on AWS"></a>十四、VMware Cloud on AWS</h2><h3 id="1、什么是-VMware-Cloud-on-AWS？"><a href="#1、什么是-VMware-Cloud-on-AWS？" class="headerlink" title="1、什么是 VMware Cloud on AWS？"></a>1、什么是 VMware Cloud on AWS？</h3><p>VMware Cloud on AWS 是 AWS 为基于 vSphere 的所有工作负载提供的首选服务。VMware Cloud on AWS 在 AWS 云中提供 VMware 的企业级 SDDC 软件，并优化了对本地 AWS 服务的访问。 VMware Cloud on AWS 由 VMware Cloud Foundation 提供支持，集成了 VMware 的计算、存储和网络虚拟化产品（VMware vSphere、VMware vSAN 和 VMware NSX）以及 VMware vCenter Server 管理功能，并且经过了优化，可以在专用的弹性裸机 AWS 基础设施上运行。</p>
+<h3 id="2、使用场景-6"><a href="#2、使用场景-6" class="headerlink" title="2、使用场景"></a>2、使用场景</h3><p>在所有基于 vSphere 的工作负载方面，AWS 是 VMware 的首选公共云合作伙伴。VMware Cloud on AWS 在基于 VMware 的数据中心与 AWS 云之间提供了一致且可互操作的基础设施和服务，从而最大限度地降低了管理不同环境的复杂性和相关风险。VMware Cloud on AWS 提供对 AWS 服务的本地访问，并提供创新技术，可提高企业应用程序在其生命周期内的价值。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%80%83%E8%AF%81%E4%B9%8B%E8%B7%AF/" class="category-chain-item">考证之路</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E8%80%83%E8%AF%81%E4%B9%8B%E8%B7%AF/AWS-SAP/" class="category-chain-item">AWS-SAP</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AWS-SAP/">#AWS-SAP</a>
+      
+        <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%80%83%E8%AF%81/">#学习考证</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>AWS-SAP考证笔记（1）计算产品</div>
+      <div>https://www.yeyusec.com/2023/09/10/考证之路/AWS-SAP/aws-sap考证笔记（1）存储产品/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>yeyusec</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年9月10日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/09/10/%E8%BF%90%E7%BB%B4%E6%95%85%E4%BA%8B/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/windows%E5%92%8Clinux%E9%98%B2%E7%81%AB%E5%A2%99/" title="windows和linux防火墙的配置">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">windows和linux防火墙的配置</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/09/10/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/%E6%A8%A1%E6%9D%BF%E6%96%87%E4%BB%B6/" title="模板文件">
+                        <span class="hidden-mobile">模板文件</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"eMQ0QW9NDWRc9H9YSH9guNP6-gzGzoHsz","appKey":"y3cQ01vcTKTEMOkMOxTx8mJ1","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://emq0qw9n.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      浙ICP备2022023065号
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

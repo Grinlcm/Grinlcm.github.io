@@ -1,0 +1,802 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="yeyusec">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="CSRF（跨站请求伪造）漏洞概述Cross-site request forgery 简称为“CSRF”，在CSRF的攻击场景中攻击者会伪造一个请求（这个请求一般是一个链接），然后欺骗目标用户进行点击，用户一旦点击了这个请求，整个攻击就完成了。CSRF与XSS的区别：CSRF是借用户的权限完成攻击，攻击者并没有拿到用户的权限，而XSS是直接盗取到了用户的权限，然后实施破坏。 1.漏洞场景小黑想要修">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pikachu靶场实战之CSRF漏洞（3）">
+<meta property="og:url" content="https://www.yeyusec.com/2023/09/10/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8BCSRF%E6%BC%8F%E6%B4%9E(3)/index.html">
+<meta property="og:site_name" content="夜雨的安全笔记">
+<meta property="og:description" content="CSRF（跨站请求伪造）漏洞概述Cross-site request forgery 简称为“CSRF”，在CSRF的攻击场景中攻击者会伪造一个请求（这个请求一般是一个链接），然后欺骗目标用户进行点击，用户一旦点击了这个请求，整个攻击就完成了。CSRF与XSS的区别：CSRF是借用户的权限完成攻击，攻击者并没有拿到用户的权限，而XSS是直接盗取到了用户的权限，然后实施破坏。 1.漏洞场景小黑想要修">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://image.yeyusec.com/img/202209171827605.jpeg">
+<meta property="article:published_time" content="2023-09-10T12:51:39.482Z">
+<meta property="article:modified_time" content="2022-09-22T13:01:08.576Z">
+<meta property="article:author" content="yeyusec">
+<meta property="article:tag" content="漏洞靶场">
+<meta property="article:tag" content="CSRF">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://image.yeyusec.com/img/202209171827605.jpeg">
+  
+  
+  
+  <title>pikachu靶场实战之CSRF漏洞（3） - 夜雨的安全笔记</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.yeyusec.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"eMQ0QW9NDWRc9H9YSH9guNP6-gzGzoHsz","app_key":"y3cQ01vcTKTEMOkMOxTx8mJ1","server_url":"https://emq0qw9n.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>夜雨的安全笔记</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="pikachu靶场实战之CSRF漏洞（3）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-09-10 20:51" pubdate>
+          2023年9月10日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          29 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">pikachu靶场实战之CSRF漏洞（3）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="CSRF（跨站请求伪造）漏洞概述"><a href="#CSRF（跨站请求伪造）漏洞概述" class="headerlink" title="CSRF（跨站请求伪造）漏洞概述"></a>CSRF（跨站请求伪造）漏洞概述</h2><p>Cross-site request forgery 简称为“CSRF”，在CSRF的攻击场景中攻击者会伪造一个请求（这个请求一般是一个链接），然后欺骗目标用户进行点击，用户一旦点击了这个请求，整个攻击就完成了。<br>CSRF与XSS的区别：CSRF是借用户的权限完成攻击，攻击者并没有拿到用户的权限，而XSS是直接盗取到了用户的权限，然后实施破坏。</p>
+<h3 id="1-漏洞场景"><a href="#1-漏洞场景" class="headerlink" title="1.漏洞场景"></a>1.漏洞场景</h3><p>小黑想要修改大白在购物网站 <code>www.xx.com</code>上填写的会员地址。<br>先看下大白是如何修改自己的密码的：<br>登录—修改会员信息，提交请求—修改成功。<br>所以小黑想要修改大白的信息，他需要拥有：1，登录权限 2，修改个人信息的请求。<br>但是大白又不会把自己xxx网站的账号密码告诉小黑，那小黑怎么办？<br>于是他自己跑到<code>www.xx.com</code>上注册了一个自己的账号，然后修改了一下自己的个人信息（比如：E-mail地址），他发现修改的请求是：<br><code>http://www.xxx.com/edit.php?email=xiaohei@88.com&amp;Change=Change</code><br>于是，他实施了这样一个操作：把这个链接伪装一下，在小白登录xxx网站后，欺骗他进行点击，小白点击这个链接后，个人信息就被修改了,小黑就完成了攻击目的。</p>
+<h3 id="2-CSRF的攻击条件"><a href="#2-CSRF的攻击条件" class="headerlink" title="2.CSRF的攻击条件"></a>2.CSRF的攻击条件</h3><p>（1）目标网站对关键信息的操作（增删改）是否容易被伪造。</p>
+<p>（2）登录态，如果用户不是登录状态，即使点击了伪造的请求也没用。</p>
+<h3 id="3-CSRF和xss的区别"><a href="#3-CSRF和xss的区别" class="headerlink" title="3.CSRF和xss的区别"></a>3.CSRF和xss的区别</h3><p>CSRF是借用户的权限完成攻击，攻击者并没有拿到用户的权限，而XSS是直接盗取到了用户的权限，然后实施破坏。也就是说如果目标站点有xss漏洞，则攻击者可以欺骗用户访问有xss脚本的页面（盗取cookie），然后攻击者可以拿到用户的权限直接登录自己修改。</p>
+<h3 id="4-如何确认站点有没有CSRF漏洞"><a href="#4-如何确认站点有没有CSRF漏洞" class="headerlink" title="4.如何确认站点有没有CSRF漏洞"></a>4.如何确认站点有没有CSRF漏洞</h3><p>关键在于对目标站点有增删改查的地方进行查看，看请求是否容易被伪造。</p>
+<p>手工的话：</p>
+<blockquote>
+<p>检测CSRF漏洞是一项比较繁琐的工作，最简单的方法就是抓取一个正常请求的数据包，去掉Referer字段后再重新提交，如果该提交还有效，那么基本上可以确定存在CSRF漏洞。</p>
+</blockquote>
+<p>工具检测,常用工具有burp，CSRFTester：</p>
+<blockquote>
+<p>以CSRFTester工具为例，CSRF漏洞检测工具的测试原理如下：使用CSRFTester进行测试时，首先需要抓取我们在浏览器中访问过的所有链接以及所有的表单等信息，然后通过在CSRFTester中修改相应的表单等信息，重新提交，这相当于一次伪造客户端请求。如果修改后的测试请求成功被网站服务器接受，则说明存在CSRF漏洞，当然此款工具也可以被用来进行CSRF攻击。</p>
+</blockquote>
+<h2 id="0x01-CSRF（get类型）"><a href="#0x01-CSRF（get类型）" class="headerlink" title="0x01 CSRF（get类型）"></a>0x01 CSRF（get类型）</h2><p>直接用burp抓包，发现该网站更新用户信息使用的是get请求，那么如果我们将请求复制下来，将里面要修改的信息替换掉诱导用户去点击，即可完成CSRF攻击。</p>
+<p><img src="https://image.yeyusec.com/img/202209200838082.jpg" srcset="/img/loading.gif" lazyload alt="csrf001"></p>
+<p>比如原来的用户性别为boy，那么我们可以构造如下的链接：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">192.168</span><span class="hljs-number">.0</span><span class="hljs-number">.106</span>:<span class="hljs-number">8097</span>/vul/csrf/csrfget/csrf_get_edit.<span class="hljs-property">php</span>?sex=dabandan&amp;phonenum=<span class="hljs-number">18626545453</span>&amp;add=zhejiang&amp;email=vince%40pikachu.<span class="hljs-property">com</span>&amp;submit=submit <br></code></pre></td></tr></table></figure>
+
+<p>然后诱导用户去点击，那么用户的性别信息就变成了‘dabendan’。</p>
+<p><img src="https://image.yeyusec.com/img/202209200841876.jpg" srcset="/img/loading.gif" lazyload alt="csrf002"></p>
+<h2 id="0x02-CSRF（post类型）"><a href="#0x02-CSRF（post类型）" class="headerlink" title="0x02 CSRF（post类型）"></a>0x02 CSRF（post类型）</h2><p>post请求不同于get，它将要修改的信息都放在请求体中，我们就没法通过伪造URL的方式来进行攻击。</p>
+<p><img src="https://image.yeyusec.com/img/202209210016883.png" srcset="/img/loading.gif" lazyload></p>
+<p>那么，常用的攻击手法就是搭建一个有表单提交功能的服务器，然后诱导用户去点击。</p>
+<p>用户服务器是：192.168.0.106</p>
+<p>攻击服务器是：192.168.0.121</p>
+<p>攻击服务器的页面源码如图，post.html.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;html&gt;<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-handlebars"><span class="language-xml">                                                                                                       <span class="hljs-comment">&lt;!-- 这个script是用来自动提交表单的 --&gt;</span></span></span></span><br><span class="language-xml"><span class="language-handlebars"><span class="language-xml">        window.onload = function() &#123;</span></span></span><br><span class="language-xml"><span class="language-handlebars"><span class="language-xml">        document.getElementById(&quot;submit&quot;).click();</span></span></span><br><span class="language-xml"><span class="language-handlebars"><span class="language-xml">        &#125;</span></span></span><br><span class="language-xml"><span class="language-handlebars"><span class="language-xml">    </span></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>              <br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;http://192.168.0.106/pikachu/vul/csrf/csrfpost/csrf_post_edit.php&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;POST&quot;</span>&gt;</span>    </span><br><span class="language-xml">                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;sex&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;girl&quot;</span> /&gt;</span></span><br><span class="language-xml">                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;phonenum&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;12345678922&quot;</span> /&gt;</span></span><br><span class="language-xml">                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;add&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;usa&quot;</span> /&gt;</span></span><br><span class="language-xml">                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;xiannv@pikachu.com&quot;</span> /&gt;</span></span><br><span class="language-xml">                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="language-xml">	            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Submit request&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display:none&quot;</span>/&gt;</span>                    <span class="hljs-comment">&lt;!-- style设置为display:none起到隐藏submit按钮的作用 --&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br>&lt;/html&gt; <br></code></pre></td></tr></table></figure>
+
+<p>只要诱导用户点击<code>http://192.168.0.121/post.html</code>这个链接即可。</p>
+<h2 id="0x03-CSRF-token"><a href="#0x03-CSRF-token" class="headerlink" title="0x03 CSRF token"></a>0x03 CSRF token</h2><p>继续登录抓包，发现这次的请求参数里面带上了token。</p>
+<p><img src="https://image.yeyusec.com/img/202209210908089.jpg" srcset="/img/loading.gif" lazyload alt="csrf004"></p>
+<p>token的话，指的是每次请求，都增加一个随机码（需要够随机，不容易被伪造），后台每次对这个随机码进行验证。这个随机码就是Token。</p>
+<p>我们查看修改页面的源码就会服务器返回的修改的源码发现有一个隐藏的属性token。</p>
+<p><img src="https://image.yeyusec.com/img/202209210916486.jpg" srcset="/img/loading.gif" lazyload alt="csrf005"></p>
+<p>而在token_get_edit文件中，我们也能看到，修改后服务端会自动生成token。</p>
+<p><img src="https://image.yeyusec.com/img/202209210919822.jpg" srcset="/img/loading.gif" lazyload alt="csrf006"></p>
+<p>按照前面csrf get的方法，攻击者会伪造一个GET URL去让用户点击。但用户正常提供GET请求时，会把服务器返回的token填入和提交，而攻击者伪造URL时除非前期抓包获取到这个返回的token，否则他是不会知道这个token的。所以攻击者无法构造GET URL。同理，对于POST方法也是一样。</p>
+<p>对于CSRF漏洞来说，token是个很好的防御手段。</p>
+<p>当然对于这关来说，我们可以用到burp的一个插件“CSRF Token Tracker”来过关，直接Extender里面搜索安装即可。</p>
+<p>在CSRF Token Tracker页面做好基础的配置，包括host以及name。</p>
+<p><img src="https://image.yeyusec.com/img/202209211956759.jpg" srcset="/img/loading.gif" lazyload alt="csrf009"></p>
+<p>接着抓包，然后发送到Repeater,修改里面的信息都为1再发送，发现没有修改成功，木有关系，点击“Follow Redirection”即可。</p>
+<p><img src="https://image.yeyusec.com/img/202209212012751.jpg" srcset="/img/loading.gif" lazyload alt="csrf007"></p>
+<p>再看看网页端。</p>
+<p><img src="https://image.yeyusec.com/img/202209212012678.jpg" srcset="/img/loading.gif" lazyload alt="csrf008"></p>
+<h2 id="0x04-CSRF漏洞的防范"><a href="#0x04-CSRF漏洞的防范" class="headerlink" title="0x04 CSRF漏洞的防范"></a>0x04 CSRF漏洞的防范</h2><p>CSRF漏洞的防护可以从以下三个方面进行考虑：</p>
+<ul>
+<li><p>CSRF自动防御策略：同源检测（Origin 和 Referer 验证）。</p>
+</li>
+<li><p>CSRF主动防御措施：Token验证 或者 双重Cookie验证 以及配合Samesite Cookie。</p>
+</li>
+<li><p>保证页面的幂等性，后端接口不要在GET页面中做用户操作。</p>
+</li>
+</ul>
+<p>不同的防御措施有利有弊，在实际的实践的，我们还是需要结合具体的业务来综合考虑，选取出最合适的最佳实践。</p>
+<p>参考文档：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://tech.meituan.com/2018/10/11/fe-security-csrf.html">https://tech.meituan.com/2018/10/11/fe-security-csrf.html</a>  前端安全系列（二）：如何防止CSRF攻击？</li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/dogecheng/p/11583412.html">https://www.cnblogs.com/dogecheng/p/11583412.html</a>  Pikachu漏洞练习平台实验</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/" class="category-chain-item">安全笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/" class="category-chain-item">靶场学习</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA/">#漏洞靶场</a>
+      
+        <a href="/tags/CSRF/">#CSRF</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>pikachu靶场实战之CSRF漏洞（3）</div>
+      <div>https://www.yeyusec.com/2023/09/10/安全笔记/靶场学习/pikachu靶场实战之CSRF漏洞(3)/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>yeyusec</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年9月10日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/09/10/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0/pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98%E4%B9%8BSQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E(4)/" title="pikachu靶场实战之SQL注入漏洞（4）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">pikachu靶场实战之SQL注入漏洞（4）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"eMQ0QW9NDWRc9H9YSH9guNP6-gzGzoHsz","appKey":"y3cQ01vcTKTEMOkMOxTx8mJ1","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://emq0qw9n.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      浙ICP备2022023065号
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
